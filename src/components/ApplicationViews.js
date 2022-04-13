@@ -13,7 +13,6 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
       <Routes>
         <Route path="/" element={<PrivateOutlet />}>
           <Route exact path="" element={""} />
-          <Route path="articles" element={""} />
           <Route path="friends" element={""} />
           <Route path="messages" element={""} />
           <Route path="tasks" element={""} />
