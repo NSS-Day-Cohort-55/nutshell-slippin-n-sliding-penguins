@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { addMessage } from "../../modules/forumDataManager";
 import { getAllUsers } from "../../modules/forumDataManager";
 
-export const MessageInput = ({ userId }) => {
+export const MessageInput = ({ userId, getMessages }) => {
   const [message, setMessage] = useState({
     userId: userId,
     recepientId: 0,
@@ -12,26 +12,21 @@ export const MessageInput = ({ userId }) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
 
   // get users from database
-  //   useEffect(() => {
-  //     getAllUsers().then((usersAPI) => {
-  //       setUsers(usersAPI);
-  //     }, []);
-  //   });
+  useEffect(() => {
+    getAllUsers().then((usersAPI) => {
+      setUsers(usersAPI);
+    });
+  }, []);
 
   // initialize username state variable
   const [username, setUsername] = useState(" ");
   // update input state and message content when input field is changed
   const handleInputChange = (e) => {
     const newMessage = { ...message };
-    let selectedVal = e.target.value;
-    if (e.target.id.includes("Id")) {
-      selectedVal = parseInt(selectedVal);
-    }
-    newMessage[e.target.id] = selectedVal;
-
+    newMessage.content = e.target.value;
     // target specific user function, removes spaces and takes first word after @ symbol
     if (e.target.value.startsWith(`@`)) {
       let removeSymbol = e.target.value.split("@")[1];
@@ -56,7 +51,7 @@ export const MessageInput = ({ userId }) => {
     if (message.recepientId === 0 && username != " ") {
       alert("user does not exist");
     } else {
-      addMessage(message);
+      addMessage(message).then(getMessages);
     }
   };
 
@@ -70,7 +65,7 @@ export const MessageInput = ({ userId }) => {
             onChange={handleInputChange}
             required
             autoFocus
-            className="form-control"
+            className="form-input"
             placeholder="Enter a message here, use the @ symbol followed by a username to private message them."
             value={message.content}
           />

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import * as fetch from "../../modules/forumDataManager.js";
 import { MessageCard } from "./MessageCard.js";
 import { MessageInput } from "./MessageInput.js";
+import "./MessageList.css";
 
 export const MessageList = () => {
   const [messages, setMessages] = useState([]);
@@ -50,7 +51,7 @@ export const MessageList = () => {
         ))}
       </div>
       <div className="message-input">
-        <MessageInput userId={userId} />
+        <MessageInput userId={userId} getMessages={getMessages} />
       </div>
     </>
   );
