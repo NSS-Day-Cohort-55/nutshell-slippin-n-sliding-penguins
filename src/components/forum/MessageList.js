@@ -20,16 +20,24 @@ export const MessageList = () => {
 
   useEffect(() => {
     getMessages();
-  }, [messages]);
+  }, []);
 
   messages.sort(function (x, y) {
     return x.timestamp - y.timestamp;
   });
 
+  let filteredMessages = messages.filter(
+    (message) =>
+      message.recepientId ===
+        parseInt(sessionStorage.getItem("nutshell_user")) ||
+      message.recepientId === 0 ||
+      message.userId === parseInt(sessionStorage.getItem("nutshell_user"))
+  );
+
   return (
     <>
       <div className="message-container">
-        {messages.map((message) => (
+        {filteredMessages.map((message) => (
           <MessageCard
             message={message}
             key={message.id}
@@ -40,3 +48,5 @@ export const MessageList = () => {
     </>
   );
 };
+
+const MessageInput = () => {};

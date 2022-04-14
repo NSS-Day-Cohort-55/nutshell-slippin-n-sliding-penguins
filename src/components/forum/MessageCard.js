@@ -1,8 +1,9 @@
+// module written by Jae should render a card for each user message
+
 import React from "react";
 import { formatMDY } from "../../helpers/formatDate";
 import "./MessageCard.css";
 export const MessageCard = ({ message, deleteMessage }) => {
-  console.log(message);
   return (
     <div className="message-wrap" id={`messageId__${message.id}`}>
       <div className="sent-details" id={`senderId__${message.user.id}`}>
@@ -13,7 +14,10 @@ export const MessageCard = ({ message, deleteMessage }) => {
           <span className="message-date">{formatMDY(message.timestamp)}</span>
         </h5>
       </div>
-      <div className="message-content">
+      <div
+        className="message-content"
+        id={`recepientId__${message.recepientId}`}
+      >
         <p>{message.content}</p>
       </div>
     </div>

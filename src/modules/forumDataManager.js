@@ -1,3 +1,5 @@
+// written by jae: collection of fetch calls for managing message data
+
 const remoteURL = "http://localhost:8088";
 
 export const getAllMessages = () => {
