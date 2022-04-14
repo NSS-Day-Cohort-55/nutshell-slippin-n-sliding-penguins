@@ -28,6 +28,7 @@ export const MessageInput = ({ userId, getMessages }) => {
     const newMessage = { ...message };
     newMessage.content = e.target.value;
     // target specific user function, removes spaces and takes first word after @ symbol
+    // TODO: ONLY BE ABLE TO @ FRIENDS
     if (e.target.value.startsWith(`@`)) {
       let removeSymbol = e.target.value.split("@")[1];
       let getName = removeSymbol.split(" ")[0];

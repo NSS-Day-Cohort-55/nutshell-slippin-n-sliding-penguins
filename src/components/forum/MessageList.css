@@ -9,17 +9,14 @@
 .userMessage-wrap {
     padding: 5px;
 }
+
 .sent-details {
     display: flex;
 }
-
 .message-name {
     padding-right: 10px;
 }
 
-/* .message-input {
-    display: flex;
-    position:sticky;
-    bottom: 50px;
-
-} */
+#content {
+    width: 100%;
+}
