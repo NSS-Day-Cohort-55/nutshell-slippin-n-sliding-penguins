@@ -39,3 +39,7 @@ export const addMessage = (newMessage) => {
     body: JSON.stringify(newMessage),
   }).then((response) => response.json());
 };
+
+export const getAllUsers = () => {
+  return fetch(`${remoteURL}/users`).then((res) => res.json());
+};

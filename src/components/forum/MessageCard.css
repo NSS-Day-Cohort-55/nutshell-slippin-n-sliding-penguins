@@ -5,6 +5,10 @@
 .message-wrap {
     padding: 5px;
 }
+
+.userMessage-wrap {
+    padding: 5px;
+}
 .sent-details {
     display: flex;
 }

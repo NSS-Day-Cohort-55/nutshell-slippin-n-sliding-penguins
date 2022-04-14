@@ -23,6 +23,7 @@ export const MessageList = () => {
   useEffect(() => {
     getMessages();
   }, []);
+
   // sorts msgs by timestamp and filters out private messages not directed at the user
   messages.sort(function (x, y) {
     return x.timestamp - y.timestamp;
@@ -37,9 +38,11 @@ export const MessageList = () => {
 
   return (
     <>
+      <h3>Message Board</h3>
       <div className="message-container">
         {filteredMessages.map((message) => (
           <MessageCard
+            userId={userId}
             message={message}
             key={message.id}
             deleteMessage={deleteMessage}
