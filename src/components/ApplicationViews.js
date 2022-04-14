@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { MessageList } from "./forum/MessageList";
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
@@ -14,7 +15,7 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
         <Route path="/" element={<PrivateOutlet />}>
           <Route exact path="" element={""} />
           <Route path="friends" element={""} />
-          <Route path="messages" element={""} />
+          <Route path="messages" element={<MessageList />} />
           <Route path="tasks" element={""} />
           <Route path="events" element={""} />
         </Route>
