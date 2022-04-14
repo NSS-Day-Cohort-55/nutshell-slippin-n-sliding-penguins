@@ -1,0 +1,29 @@
+/* CSS Styling to get everythin in place for future inserts
+Rushay */
+
+.dash_weather{
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom:2rem;
+}
+
+.dash_main{
+    display:flex;
+    gap:2rem;
+}
+
+.dash_events{
+ background-color: bisque;
+ height:500px;
+ width:20%;
+ 
+}
+.dash_news{
+    background-color: bisque;
+    width:50%;
+}
+
+.dash_friends{
+    background-color: bisque;
+    width:20%;
+}
