@@ -11,7 +11,6 @@ export const MessageInput = ({ userId, getMessages }) => {
     timestamp: Date.now(),
   });
 
-  const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
 
   // get users from database
@@ -55,7 +54,7 @@ export const MessageInput = ({ userId, getMessages }) => {
     if (message.recepientId === userId) {
       alert("you cannot private message yourself");
     }
-    if (message.recepientId === 0 && username != " ") {
+    if (message.recepientId === 0 && username !== " ") {
       alert("user does not exist");
     } else {
       addMessage(message).then(getMessages).then(ScrollToBottom());
