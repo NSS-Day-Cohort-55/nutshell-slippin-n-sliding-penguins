@@ -22,24 +22,24 @@ export const TaskList =() => {
         .then(() => getAllTasks().then(setTasks))
     }
 
-    // const handleupdateTask = (id) => {
-    //     const editTask = {
-    //         id: id,
-    //         dateDue: "",
-    //         // taskDescription: "",
-    //         isComplete: true
-    //     }
-    //     updateTask(editTask).then(() => getAllTasks().then(setTasks))
-    // }
+    const handleupdateTask = (id) => {
+        const editTask = {
+            id: id,
+            dateDue: "",
+            // taskDescription: "",
+            isComplete: true
+        }
+        updateTask(editTask).then(() => getAllTasks().then(setTasks))
+    }
 
-    const handleEditTask = id => {
-        navigate(`/tasks/${id}/edit`)
-        .then(() => getAllTasks().then(setTasks));
-    };
+    // const handleEditTask = id => {
+    //     navigate(`/tasks/${id}/edit`)
+    //     .then(() => getAllTasks().then(setTasks));
+    // };
 
-    useEffect(() => {
-        getTasks()
-    }, [])
+    // useEffect(() => {
+    //     getTasks()
+    // }, [])
 
 
 
