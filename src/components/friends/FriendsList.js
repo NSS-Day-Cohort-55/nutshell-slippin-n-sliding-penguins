@@ -34,8 +34,8 @@ export const FriendsList = () => {
   return (
     <>
       <h3>Friends List</h3>
-      <input type="button" value="Click to Open Popup" onClick={togglePopup} />
-      {isOpen && <Popup handleClose={togglePopup} />}
+      <input type="button" value="Add A Friend!" onClick={togglePopup} />
+      {isOpen && <Popup handleClose={togglePopup} getFriends={getFriends} />}
       <div className="friends-container">
         {friends.map((friend) => (
           <FriendCard
