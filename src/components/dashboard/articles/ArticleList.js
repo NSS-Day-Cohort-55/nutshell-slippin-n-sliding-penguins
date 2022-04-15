@@ -2,47 +2,35 @@
 //This function should be exported to dashboard
 //Rushay
 
-
-import { getAllArticles } from "../../../modules/articleManager"
+import { getAllArticles } from "../../../modules/articleManager";
 import React, { useEffect, useState } from "react";
 import { Article } from "./Article.js";
 
-
-
 export const ArticleList = () => {
-    
-    const [articles, setArticles] = useState([])
-    
+  const [articles, setArticles] = useState([]);
 
- 
+  const getArticles = () => {
+    return getAllArticles().then((arrayOfArticles) => {
+      setArticles(arrayOfArticles);
+    });
+  };
 
-   const getArticles = () => {
-       return getAllArticles().then(arrayOfArticles => {
-           setArticles(arrayOfArticles)
-       })
-   }
-
-   useEffect(() => {
+  useEffect(() => {
     getArticles();
   }, []);
 
- 
+  // useEffect(() => {
+  //     getAllArticles()
+  // }, []);
 
-    // useEffect(() => {
-    //     getAllArticles()
-    // }, []);
-
-    
-
-    return(
-        <>
-            <h2>My Articles</h2>
-            <div className="articleCardsHolder">
-            {articles.map(singleArticle =>
-                <Article object={singleArticle} />
-            )}
-            </div>
-        </>
-
-    )
-}
+  return (
+    <>
+      <h2>My Articles</h2>
+      <div className="articleCardsHolder">
+        {articles.map((singleArticle) => (
+          <Article object={singleArticle} key={singleArticle.id} />
+        ))}
+      </div>
+    </>
+  );
+};
