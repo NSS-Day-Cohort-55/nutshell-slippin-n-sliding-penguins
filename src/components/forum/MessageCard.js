@@ -3,7 +3,6 @@
 import React from "react";
 import { formatMDY } from "../../helpers/formatDate";
 
-// TODO: MESSAGES AT THE BOTTOM SHOULD ALWAYS BE VISIBLE WITHOUT SCROLLING
 export const MessageCard = ({ message, deleteMessage, userId }) => {
   // user messages rendered slightly differently
   if (message.user.id === userId) {

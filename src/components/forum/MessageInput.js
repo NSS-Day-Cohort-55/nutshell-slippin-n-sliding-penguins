@@ -44,6 +44,12 @@ export const MessageInput = ({ userId, getMessages }) => {
     setMessage(newMessage);
   };
 
+  // scroll to bottom after this function is called
+  const ScrollToBottom = () => {
+    const messageParent = document.querySelector(".message-container");
+    messageParent.scrollTop = messageParent.scrollHeight;
+  };
+
   const handleSendMessage = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
     if (message.recepientId === userId) {
@@ -52,7 +58,7 @@ export const MessageInput = ({ userId, getMessages }) => {
     if (message.recepientId === 0 && username != " ") {
       alert("user does not exist");
     } else {
-      addMessage(message).then(getMessages);
+      addMessage(message).then(getMessages).then(ScrollToBottom());
       message.content = "";
     }
   };

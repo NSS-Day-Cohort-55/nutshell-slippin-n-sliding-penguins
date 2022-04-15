@@ -20,7 +20,7 @@ export const MessageList = () => {
       .deleteMessage(id)
       .then(() => fetch.getAllMessages().then(setMessages));
   };
-  // TODO: FIGURE OUT WHAT DEPENDANCY ARRAY TO USE HERE
+
   useEffect(() => {
     getMessages();
   }, []);
