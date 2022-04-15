@@ -1,3 +1,5 @@
+//component programmed by SC; component allows an event card to be created 
+
 import React from "react";
 import "./Event.css";
 import { formatMDY } from "../../helpers/formatDate";
@@ -8,9 +10,9 @@ export const EventCard = ({event, handleDeleteEvent}) => {
     return (
 <div className="card">
     <div className="card-content">
-    <h3>Event Description: <span className="card-eventdescription">
+    <h4>Event Description: <span className="card-eventdescription">
         {event.description}
-      </span></h3>
+      </span></h4>
       <p> Event Date: {event.eventDate}</p>
       <h5>
           <span className="eventcreated-date">{formatMDY(event.timestamp)}</span>

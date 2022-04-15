@@ -1,4 +1,4 @@
-//module programmed by SC; should create list of events by passing info to event card
+//module programmed by SC; should create list of events by passing data to event card
 
 import React, {useState, useEffect} from 'react';
 import { deleteEvent, getAllEvents } from '../../modules/EventManager';
@@ -33,7 +33,7 @@ export const EventList = () => {
      <button type="button"
      className="btn"
      onClick={() => {navigate("/events/create")}}>
-    Add a New Event
+    Click Here to Add a New Event
         </button>
     </section>
         <div className="container-cards">
@@ -41,6 +41,7 @@ export const EventList = () => {
        <EventCard 
        key={event.id} 
        event={event.description}
+       date={event.eventDate}
        handleDeleteEvent= {handleDeleteEvent} />
        )}
         </div>
