@@ -45,11 +45,6 @@ export const MessageInput = ({ userId, getMessages }) => {
 
   // scroll to bottom after this function is called
   // TODO: FIX ASYNC ISSUE
-  const ScrollToBottom = () => {
-    const messageParent = document.querySelector(".message-container");
-    messageParent.scrollTop = messageParent.scrollHeight;
-  };
-
   const handleSendMessage = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
     if (message.recepientId === userId) {
@@ -58,7 +53,7 @@ export const MessageInput = ({ userId, getMessages }) => {
     if (message.recepientId === 0 && username !== " ") {
       alert("user does not exist");
     } else {
-      addMessage(message).then(getMessages).then(ScrollToBottom());
+      addMessage(message).then(getMessages);
       message.content = "";
     }
   };

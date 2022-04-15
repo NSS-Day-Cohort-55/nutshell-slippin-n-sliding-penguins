@@ -1,5 +1,5 @@
 // Module programmed by Jae, should create a list of messages by passing information to message card.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as fetch from "../../modules/forumDataManager.js";
 import { MessageCard } from "./MessageCard.js";
 import { MessageInput } from "./MessageInput.js";
@@ -37,6 +37,17 @@ export const MessageList = () => {
       message.userId === userId
   );
 
+  // scroll to bottom of a div
+  const messageEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <>
       <h3>Message Board</h3>
@@ -49,6 +60,7 @@ export const MessageList = () => {
             deleteMessage={deleteMessage}
           />
         ))}
+        <div ref={messageEndRef}></div>
       </div>
       <div className="message-input">
         <MessageInput userId={userId} getMessages={getMessages} />
