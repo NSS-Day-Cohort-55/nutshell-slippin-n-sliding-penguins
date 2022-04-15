@@ -1,4 +1,4 @@
-// should take in user input, and post it to the database with the right recepient.
+// component programmed by jae : should take in user input, and post it to the database with the right recepient.
 import React, { useState, useEffect } from "react";
 import { addMessage } from "../../modules/forumDataManager";
 import { getAllUsers } from "../../modules/forumDataManager";
