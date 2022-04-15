@@ -39,7 +39,11 @@ export const MessageInput = ({ userId, getMessages }) => {
       if (filteredUsers.length > 0) {
         newMessage.recepientId = filteredUsers[0].id;
       } else newMessage.recepientId = 0;
+    } else {
+      setUsername(" ");
     }
+    console.log(newMessage.recepientId);
+    console.log(username);
     setMessage(newMessage);
   };
 
@@ -48,9 +52,11 @@ export const MessageInput = ({ userId, getMessages }) => {
     event.preventDefault(); //Prevents the browser from submitting the form
     if (message.recepientId === userId) {
       alert("you cannot private message yourself");
+      return;
     }
     if (message.recepientId === 0 && username !== " ") {
       alert("user does not exist");
+      return;
     } else {
       addMessage(message).then(getMessages);
       message.content = "";
