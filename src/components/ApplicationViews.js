@@ -4,6 +4,7 @@ import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { EventList } from "./events/EventList";
 import { EventForm } from "./events/EventForm";
+import { EventEditForm } from "./events/EventEditForm";
 import { Dashboard } from "./dashboard/Dashboard";
 import { MessageList } from "./forum/MessageList";
 
@@ -21,11 +22,11 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route path="messages" element={<MessageList />} />
           <Route path="tasks" element={""} />
 
-          <Route path="events" element={<EventList />} />
+          <Route path="events" element={<EventList />} />      
           <Route path="/events/create" element={<EventForm/>} /> 
+          <Route path="/events/:eventId/edit" element={<EventEditForm/>} /> 
         </Route>
 
-        
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
         <Route path="/register" element={<Register />} />
       </Routes>

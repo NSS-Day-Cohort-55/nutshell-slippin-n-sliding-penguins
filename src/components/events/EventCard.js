@@ -1,4 +1,4 @@
-//component programmed by SC; component allows an event card to be created 
+//component programmed by SC; component allows an event card to be created and presented on DOM
 
 import React from "react";
 import "./Event.css";
@@ -8,23 +8,27 @@ import {Link } from "react-router-dom"
 export const EventCard = ({event, handleDeleteEvent}) => {
     console.log(event);
     return (
-<div className="card">
+        <>
+<div className="card" id="event_{event.id}">
     <div className="card-content">
-    <h4>Event Description: <span className="card-eventdescription">
+    <h5> Event</h5>
+    <h6> Info: <span className="card-eventdescription">
         {event.description}
-      </span></h4>
-      <p> Event Date: {event.eventDate}</p>
-      <h5>
+      </span></h6>
+      <h6> Date: {event.eventDate}</h6>
+      <h6>
           <span className="eventcreated-date">{formatMDY(event.timestamp)}</span>
-    </h5>
+    </h6>
       </div>
-      <Link to={`/events/${event.id}`}>
-          <button>Event Details</button>
-          </Link>
+      <Link to={`/events/${event.id}/edit`}>
+          <button>Edit Event</button>
+      </Link>
       <button type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
       </div>
-
+      
+      </>
  
-)}
+);
+}
 
 

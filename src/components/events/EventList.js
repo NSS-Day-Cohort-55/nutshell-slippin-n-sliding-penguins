@@ -33,7 +33,7 @@ export const EventList = () => {
      <button type="button"
      className="btn"
      onClick={() => {navigate("/events/create")}}>
-    Click Here to Add a New Event
+    <h3> Add New Event </h3>
         </button>
     </section>
         <div className="container-cards">

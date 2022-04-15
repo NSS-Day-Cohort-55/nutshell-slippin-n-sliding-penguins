@@ -1,3 +1,4 @@
+//this will manage all the fetch calls fro events
 const remoteURL = "http://localhost:8088"
 
 export const getEventById = (eventId) => {
