@@ -3,10 +3,23 @@
 
 import React from "react"
 import "./Article.css"
+import { deleteArticle } from "../../../modules/articleManager";
+import { formatMDY } from "../../../helpers/formatDate";
+import { Link } from "react-router-dom";
 
-export const Article = ({object}) => {
-    console.log(object)
 
+
+
+export const Article = ({object, getArticles}) => {
+
+    const handleDelete = () => {
+          deleteArticle(object.id).then(() =>
+          getArticles()
+        );
+    };
+
+
+    const theDate = formatMDY(object.timestamp)
 
     return (
         <>
@@ -15,8 +28,13 @@ export const Article = ({object}) => {
                 <p>{object.synopsis}</p>
                 {/* This need to open a new tab or I will go nuts */}
                 <a href={object.url}>See the full article here</a>
-                <p>{object.timestamp}</p>
-
+                <p>{theDate}</p>
+                <div>
+                    <button onClick={handleDelete}>Delete</button>
+                    <Link to={`/editArticle/${object.id}`}>
+                        <button>Edit</button>
+                    </Link>
+                </div>
             </div>
         </>
     );
