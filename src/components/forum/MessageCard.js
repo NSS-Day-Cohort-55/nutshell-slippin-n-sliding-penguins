@@ -48,6 +48,7 @@ export const MessageCard = ({ message, deleteMessage, userId, getFriends }) => {
                 handleClose={togglePopup}
                 getFriends={getFriends}
                 name={message.user.name}
+                messageUserId={message.user.id}
               />
             )}
           </h5>

@@ -9,7 +9,7 @@ import "./popup.css";
 export const Popup = (props) => {
   // for handling popup input
   const [addFriend, setAddedFriend] = useState({
-    userId: 0,
+    userId: props.messageUserId ? props.messageUserId : 0,
     currentUserId: parseInt(sessionStorage.getItem("nutshell_user")),
     user: {
       name: props.name ? props.name : "",
@@ -34,9 +34,9 @@ export const Popup = (props) => {
     );
   }, []);
 
+  // handles change for input field for adding a user in the popup
   const handleInputChange = (e) => {
     e.preventDefault();
-
     const newFriend = { ...addFriend };
 
     newFriend.user.name = e.target.value;
@@ -53,6 +53,8 @@ export const Popup = (props) => {
 
     setAddedFriend(newFriend);
   };
+
+  // conditionals for handling when add friend is submitted
   const handleAddFriend = (evt) => {
     evt.preventDefault();
     if (currentFriends.length > 0) {
@@ -73,7 +75,8 @@ export const Popup = (props) => {
           props.handleClose();
         }
       });
-    } else {
+    }
+    if (currentFriends.length === 0) {
       addAFriend(addFriend).then(props.getFriends);
       alert("Friend Added!");
       addFriend.user.name = "";
