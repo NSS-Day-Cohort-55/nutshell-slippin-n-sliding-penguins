@@ -15,6 +15,11 @@ export const getArticlesByUser = (num) => {
     .then(res => res.json())
 }
 
+export const getSpecificArticle = (num) => {
+    return fetch(`${remoteURL}/articles/${num}`)
+    .then(res => res.json())
+}
+
   
 export const addArticle = newArticle => {
   return fetch(`${remoteURL}/articles`, {

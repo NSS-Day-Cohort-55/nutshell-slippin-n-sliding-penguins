@@ -1,15 +1,29 @@
 //This will allow a user to edit an existing
 //Rushay
 
-import React, {useState} from "react";
-import { addArticle } from "../../../modules/articleManager";
-import { useNavigate } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { addArticle, getSpecificArticle } from "../../../modules/articleManager";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 
 export const EditArticleForm = () => {
     const navigate= useNavigate()
     const [article, setArticle] = useState();
+    const {articleId} = useParams();
+
+    const getArticleToEdit = () =>{
+        return getSpecificArticle(articleId).then(specificArticle =>{
+            setArticle(specificArticle)
+        })
+    }
+
+    useEffect(() => {
+        getArticleToEdit();
+        console.log("It's all set and ready to go")
+        console.log(article)
+      }, []);
+
 
     //Here we will collect the userId and the Timestamp
     const theDate=Date.now()

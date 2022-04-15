@@ -22,7 +22,7 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route path="tasks" element={""} />
           <Route path="events" element={""} />
           <Route path="createArticle" element={<CreateArticleForm/>}/>
-          <Route path="/:articleId" element={<EditArticleForm/>}/>
+          <Route path="/editArticle/:articleId" element={<EditArticleForm/>}/>
         </Route>
 
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />

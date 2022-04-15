@@ -31,7 +31,7 @@ export const Article = ({object, getArticles}) => {
                 <p>{theDate}</p>
                 <div>
                     <button onClick={handleDelete}>Delete</button>
-                    <Link to={`/${object.id}`}>
+                    <Link to={`/editArticle/${object.id}`}>
                         <button>Edit</button>
                     </Link>
                 </div>
