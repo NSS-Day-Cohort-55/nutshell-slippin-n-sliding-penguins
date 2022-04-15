@@ -10,12 +10,8 @@ import { Link } from "react-router-dom";
 
 
 
-
-
 export const ArticleList = () => {
-    
-    const [articles, setArticles] = useState([])
-    
+  const [articles, setArticles] = useState([]);
 
  
     const theUser = sessionStorage.getItem("nutshell_user")
