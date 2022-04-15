@@ -42,8 +42,6 @@ export const MessageInput = ({ userId, getMessages }) => {
     } else {
       setUsername(" ");
     }
-    console.log(newMessage.recepientId);
-    console.log(username);
     setMessage(newMessage);
   };
 
