@@ -44,7 +44,6 @@ export const MessageInput = ({ userId, getMessages }) => {
   };
 
   // scroll to bottom after this function is called
-  // TODO: FIX ASYNC ISSUE
   const handleSendMessage = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
     if (message.recepientId === userId) {
