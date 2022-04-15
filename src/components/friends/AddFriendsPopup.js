@@ -55,26 +55,22 @@ export const Popup = (props) => {
   };
   const handleAddFriend = (evt) => {
     evt.preventDefault();
-    // currentFriends.forEach((friend) => {
-    //   console.log(friend.userId);
-    //   console.log(addFriend.userId);
-    //   if (friend.userId === addFriend.userId) {
-    //     alert("You already have this user added!");
-    //     return;
-    //   }
-    // });
-    if (addFriend.userId === addFriend.currentUserId) {
-      alert("You cannot add yourself as a friend!");
-      return;
-    }
-    if (addFriend.userId === 0) {
-      alert("This user does not exist!");
-      return;
-    } else {
-      addAFriend(addFriend).then(props.getFriends);
-      alert("Friend Added!");
-      addFriend.user.name = "";
-    }
+    currentFriends.forEach((friend) => {
+      if (friend.userId === addFriend.userId) {
+        alert("You already have this user added!");
+        return;
+      } else if (addFriend.userId === addFriend.currentUserId) {
+        alert("You cannot add yourself as a friend!");
+        return;
+      } else if (addFriend.userId === 0) {
+        alert("This user does not exist!");
+        return;
+      } else {
+        addAFriend(addFriend).then(props.getFriends);
+        alert("Friend Added!");
+        addFriend.user.name = "";
+      }
+    });
   };
 
   console.log(currentFriends);
