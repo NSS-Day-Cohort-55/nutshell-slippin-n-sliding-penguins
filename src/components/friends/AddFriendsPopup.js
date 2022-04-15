@@ -27,9 +27,11 @@ export const Popup = (props) => {
 
   // get currently logged in users friends
   useEffect(() => {
-    getAllFriends().then((friendsAPI) => {
-      setCurrentFriends(friendsAPI);
-    });
+    getAllFriends(parseInt(sessionStorage.getItem("nutshell_user"))).then(
+      (friendsAPI) => {
+        setCurrentFriends(friendsAPI);
+      }
+    );
   }, []);
 
   const handleInputChange = (e) => {
@@ -53,14 +55,14 @@ export const Popup = (props) => {
   };
   const handleAddFriend = (evt) => {
     evt.preventDefault();
-    currentFriends.forEach((friend) => {
-      console.log(friend.userId);
-      console.log(addFriend.userId);
-      if (friend.userId === addFriend.userId) {
-        alert("You already have this user added!");
-        return;
-      }
-    });
+    // currentFriends.forEach((friend) => {
+    //   console.log(friend.userId);
+    //   console.log(addFriend.userId);
+    //   if (friend.userId === addFriend.userId) {
+    //     alert("You already have this user added!");
+    //     return;
+    //   }
+    // });
     if (addFriend.userId === addFriend.currentUserId) {
       alert("You cannot add yourself as a friend!");
       return;
@@ -74,6 +76,8 @@ export const Popup = (props) => {
       addFriend.user.name = "";
     }
   };
+
+  console.log(currentFriends);
 
   return (
     <div className="popup-box">
