@@ -4,6 +4,8 @@ import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { Dashboard } from "./dashboard/Dashboard";
 import { MessageList } from "./forum/MessageList";
+import { CreateArticleForm} from "./dashboard/articles/CreateArticleForm";
+import { EditArticleForm} from "./dashboard/articles/EditArticleForm"
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
@@ -19,6 +21,8 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route path="messages" element={<MessageList />} />
           <Route path="tasks" element={""} />
           <Route path="events" element={""} />
+          <Route path="createArticle" element={<CreateArticleForm/>}/>
+          <Route path="/:articleId" element={<EditArticleForm/>}/>
         </Route>
 
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
