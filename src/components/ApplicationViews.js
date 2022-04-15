@@ -4,6 +4,7 @@ import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { Dashboard } from "./dashboard/Dashboard";
 import { MessageList } from "./forum/MessageList";
+import { FriendsList } from "./friends/FriendsList";
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
@@ -14,8 +15,8 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
     <>
       <Routes>
         <Route path="/" element={<PrivateOutlet />}>
-          <Route exact path="/" element={< Dashboard/>}/>
-          <Route path="friends" element={""} />
+          <Route exact path="/" element={<Dashboard />} />
+          <Route path="friends" element={<FriendsList />} />
           <Route path="messages" element={<MessageList />} />
           <Route path="tasks" element={""} />
           <Route path="events" element={""} />

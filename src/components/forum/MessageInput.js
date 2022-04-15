@@ -63,7 +63,7 @@ export const MessageInput = ({ userId, getMessages }) => {
   };
 
   return (
-    <form className="messageForm">
+    <div className="messageForm">
       <fieldset>
         <div className="form-group">
           <input
@@ -73,7 +73,7 @@ export const MessageInput = ({ userId, getMessages }) => {
             required
             autoFocus
             className="form-input"
-            placeholder="Enter a message here, use the @ symbol followed by a username to private message them."
+            placeholder="Enter a message here, use the @ symbol followed by a username to private message someone."
             value={message.content}
           />
         </div>
@@ -81,6 +81,6 @@ export const MessageInput = ({ userId, getMessages }) => {
       <button type="button" className="btn-send" onClick={handleSendMessage}>
         Send Message
       </button>
-    </form>
+    </div>
   );
 };
