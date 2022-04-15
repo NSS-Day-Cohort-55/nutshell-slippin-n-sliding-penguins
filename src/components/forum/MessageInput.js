@@ -24,6 +24,7 @@ export const MessageInput = ({ userId, getMessages }) => {
   const [username, setUsername] = useState(" ");
   // update input state and message content when input field is changed
   const handleInputChange = (e) => {
+    e.preventDefault();
     const newMessage = { ...message };
     newMessage.content = e.target.value;
     // target specific user function, removes spaces and takes first word after @ symbol
