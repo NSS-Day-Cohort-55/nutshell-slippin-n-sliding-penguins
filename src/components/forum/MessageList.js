@@ -1,5 +1,5 @@
 // Module programmed by Jae, should create a list of messages by passing information to message card.
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import * as fetch from "../../modules/forumDataManager.js";
 import { MessageCard } from "./MessageCard.js";
 import { MessageInput } from "./MessageInput.js";
@@ -51,7 +51,7 @@ export const MessageList = () => {
         ))}
       </div>
       <div className="message-input">
-        <MessageInput userId={userId} />
+        <MessageInput userId={userId} getMessages={getMessages} />
       </div>
     </>
   );
