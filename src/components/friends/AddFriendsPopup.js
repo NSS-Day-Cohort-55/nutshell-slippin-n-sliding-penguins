@@ -12,7 +12,7 @@ export const Popup = (props) => {
     userId: 0,
     currentUserId: parseInt(sessionStorage.getItem("nutshell_user")),
     user: {
-      name: "",
+      name: props.name ? props.name : "",
     },
   });
   const [users, setUsers] = useState([]);
