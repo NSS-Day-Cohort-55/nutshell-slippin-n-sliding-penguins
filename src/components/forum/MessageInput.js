@@ -44,6 +44,7 @@ export const MessageInput = ({ userId, getMessages }) => {
   };
 
   // scroll to bottom after this function is called
+  // TODO: FIX ASYNC ISSUE
   const ScrollToBottom = () => {
     const messageParent = document.querySelector(".message-container");
     messageParent.scrollTop = messageParent.scrollHeight;
