@@ -1,8 +1,8 @@
 //Author: Joe Maifeld. Component actions:
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addTask } from '../../modules/TaskDataManager';
+import { addTask, getAllTasks } from '../../modules/TaskDataManager';
 
 export const TaskForm = () => {
   //TODO Make isComplete statement show string "Not Complete" instead of false
@@ -15,6 +15,7 @@ export const TaskForm = () => {
   });
 
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleControlledInputChange = (event) => {
     const newTask = { tasks, setTasks }

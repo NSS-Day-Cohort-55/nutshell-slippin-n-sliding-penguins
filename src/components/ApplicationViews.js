@@ -6,6 +6,7 @@ import { Dashboard } from "./dashboard/Dashboard";
 import { MessageList } from "./forum/MessageList";
 import { TaskList } from "./tasks/TaskList";
 import { TaskForm } from "./tasks/TaskForm";
+import { TaskEditForm } from "./tasks/TaskEditForm"
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
@@ -21,8 +22,8 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route path="messages" element={<MessageList />} />
           <Route exact path="tasks" element={<TaskList />} />
           <Route path="tasks/add" element={<TaskForm />} />
-          <Route path="events" element={""} />
-        </Route>
+          <Route path="tasks/:taskId/edit" element={<TaskEditForm/>}/>
+          <Route path="events" element={""} /></Route>
 
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
         <Route path="/register" element={<Register />} />

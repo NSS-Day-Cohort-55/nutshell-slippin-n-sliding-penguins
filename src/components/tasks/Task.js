@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom"
 
-export const TaskCard = ({singleTask, handleDeleteTask, handleReviseTask}) => {
+export const TaskCard = ({singleTask, handleDeleteTask, handleupdateTask}) => {
 
     return (
         <>
@@ -14,7 +14,7 @@ export const TaskCard = ({singleTask, handleDeleteTask, handleReviseTask}) => {
                 {singleTask.isComplete?
                 <button type="button" onClick={() => handleDeleteTask(singleTask.id)}>You did it!</button> :
                 //TODO rework checkbox, make it so that when it's clicked it auto adjusts the DB, possibly a popup to confirm?
-                <label><input type="checkbox" onClick={() => handleReviseTask(singleTask.id)}></input>Completed Task!</label>}
+                <label><input type="checkbox" onClick={() => handleupdateTask(singleTask.id)}></input>Completed Task!</label>}
             </div>
         </div>
         </>

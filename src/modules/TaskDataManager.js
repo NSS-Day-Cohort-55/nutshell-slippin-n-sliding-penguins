@@ -23,7 +23,7 @@ export const deleteTask = (taskId) => {
         }).then(result => result.json())    
 }
 
-export const reviseTask = (singleTask) => {
+export const updateTask = (singleTask) => {
     return fetch (`${remoteURL}/tasks/${singleTask.id}`, {
         method: "PATCH",
         headers: {

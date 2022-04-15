@@ -2,7 +2,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllTasks, deleteTask, reviseTask } from "../../modules/TaskDataManager.js"
+import { getAllTasks, deleteTask, updateTask } from "../../modules/TaskDataManager.js"
 import { TaskCard } from "./Task.js"
 
 
@@ -22,19 +22,30 @@ export const TaskList =() => {
         .then(() => getAllTasks().then(setTasks))
     }
 
-    const handleReviseTask = (id) => {
-        const editTask = {
-            id: id,
-            dateDue: "",
-            // taskDescription: "",
-            isComplete: true
-        }
-        reviseTask(editTask).then(() => getAllTasks().then(setTasks))
-    }
+    // const handleupdateTask = (id) => {
+    //     const editTask = {
+    //         id: id,
+    //         dateDue: "",
+    //         // taskDescription: "",
+    //         isComplete: true
+    //     }
+    //     updateTask(editTask).then(() => getAllTasks().then(setTasks))
+    // }
+
+    const handleEditTask = id => {
+        navigate(`/tasks/${id}/edit`)
+        .then(() => getAllTasks().then(setTasks));
+    };
 
     useEffect(() => {
         getTasks()
     }, [])
+
+
+
+
+
+
 
 
     return (
@@ -50,7 +61,7 @@ export const TaskList =() => {
                     key={task.id}
                     singleTask={task}
                     handleDeleteTask={handleDeleteTask}
-                    handleReviseTask={handleReviseTask}/>
+                    handleupdateTask={handleupdateTask}/>
                     )}
         </div>                                    
         </>
