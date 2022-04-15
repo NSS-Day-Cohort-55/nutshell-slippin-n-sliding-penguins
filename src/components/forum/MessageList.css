@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+
+.message-container {
+    border: 1px solid black;
+    height: 750px;
+    overflow: auto;
+}
+
 .message-wrap {
     padding: 5px;
 }

@@ -53,6 +53,7 @@ export const MessageInput = ({ userId, getMessages }) => {
       alert("user does not exist");
     } else {
       addMessage(message).then(getMessages);
+      message.content = "";
     }
   };
 
