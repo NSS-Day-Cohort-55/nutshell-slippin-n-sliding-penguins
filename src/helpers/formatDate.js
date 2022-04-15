@@ -1,3 +1,5 @@
+// written by jae: formats date based on MDY or Day of the week, if anyone adds anymore date formatters be sure to add your name here.
+
 // returns date in MDY format
 export const formatMDY = (integer) => {
   const date = new Date(integer);
