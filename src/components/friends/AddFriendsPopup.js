@@ -36,8 +36,8 @@ export const Popup = (props) => {
 
   // handles change for input field for adding a user in the popup
   const handleInputChange = (e) => {
-    e.preventDefault();
     const newFriend = { ...addFriend };
+    e.preventDefault();
 
     newFriend.user.name = e.target.value;
 
@@ -57,34 +57,34 @@ export const Popup = (props) => {
   // conditionals for handling when add friend is submitted
   const handleAddFriend = (evt) => {
     evt.preventDefault();
+    let exists = false;
     if (currentFriends.length > 0) {
       currentFriends.forEach((friend) => {
         if (friend.userId === addFriend.userId) {
           alert("You already have this user added!");
-          return;
-        } else if (addFriend.userId === addFriend.currentUserId) {
-          alert("You cannot add yourself as a friend!");
-          return;
-        } else if (addFriend.userId === 0) {
-          alert("This user does not exist!");
-          return;
-        } else {
-          addAFriend(addFriend).then(props.getFriends);
-          alert("Friend Added!");
-          addFriend.user.name = "";
-          props.handleClose();
+          exists = true;
         }
       });
     }
-    if (currentFriends.length === 0) {
+    if (addFriend.userId === addFriend.currentUserId) {
+      alert("You cannot add yourself as a friend!");
+      return;
+    }
+    if (addFriend.userId === 0) {
+      alert("This user does not exist!");
+      return;
+    }
+    if (
+      addFriend.userId != 0 &&
+      addFriend.userId !== addFriend.currentUserId &&
+      exists === false
+    ) {
       addAFriend(addFriend).then(props.getFriends);
       alert("Friend Added!");
       addFriend.user.name = "";
       props.handleClose();
     }
   };
-  console.log(currentFriends);
-  console.log(addFriend.user.name);
 
   return (
     <div className="popup-box">
