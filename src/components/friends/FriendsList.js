@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import * as fetch from "../../modules/friendsManager.js";
 import { FriendCard } from "./FriendCard.js";
+import "./FriendsList.css";
+import { Popup } from "./AddFriendsPopup.js";
 
 export const FriendsList = () => {
   const [friends, setFriends] = useState([]);
@@ -22,9 +24,29 @@ export const FriendsList = () => {
     getFriends();
   }, []);
 
+  // this is for managing state of the popup
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <h3>Friends List</h3>
+      <input type="button" value="Click to Open Popup" onClick={togglePopup} />
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <b>Add A Friend</b>
+              <p>USER INPUT FOR NAME GOES HERE</p>
+              <button>add</button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
       <div className="friends-container">
         {friends.map((friend) => (
           <FriendCard
