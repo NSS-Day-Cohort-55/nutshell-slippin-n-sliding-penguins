@@ -2,35 +2,50 @@
 //This function should be exported to dashboard
 //Rushay
 
-import { getAllArticles } from "../../../modules/articleManager";
+
+import { getArticlesByUser } from "../../../modules/articleManager"
 import React, { useEffect, useState } from "react";
 import { Article } from "./Article.js";
+import { Link } from "react-router-dom";
+
+
 
 export const ArticleList = () => {
   const [articles, setArticles] = useState([]);
 
-  const getArticles = () => {
-    return getAllArticles().then((arrayOfArticles) => {
-      setArticles(arrayOfArticles);
-    });
-  };
+ 
+    const theUser = sessionStorage.getItem("nutshell_user")
 
-  useEffect(() => {
+
+   const getArticles = () => {
+       return getArticlesByUser(theUser).then(arrayOfArticles => {
+           setArticles(arrayOfArticles)
+       })
+   }
+
+
+   useEffect(() => {
     getArticles();
   }, []);
 
-  // useEffect(() => {
-  //     getAllArticles()
-  // }, []);
 
-  return (
-    <>
-      <h2>My Articles</h2>
-      <div className="articleCardsHolder">
-        {articles.map((singleArticle) => (
-          <Article object={singleArticle} key={singleArticle.id} />
-        ))}
-      </div>
-    </>
-  );
-};
+    
+
+    return(
+        <>
+            <h2>My Articles</h2>
+            <div className="articleCardsHolder">
+            {articles.map(singleArticle =>
+                <Article key={singleArticle.id} object={singleArticle} getArticles={getArticles} />
+            )}
+            </div>
+            <div>
+                <Link to={`/createArticle`}>
+                    <button>New</button>
+                </Link>
+            
+            </div>
+        </>
+
+    )
+}
