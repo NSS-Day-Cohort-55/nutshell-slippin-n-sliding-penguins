@@ -69,6 +69,7 @@ export const Popup = (props) => {
         addAFriend(addFriend).then(props.getFriends);
         alert("Friend Added!");
         addFriend.user.name = "";
+        props.handleClose();
       }
     });
   };
