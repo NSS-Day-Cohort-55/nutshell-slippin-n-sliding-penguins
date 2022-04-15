@@ -56,7 +56,9 @@ export const EventForm =() => {
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Date of Event:</label>
-					<input type="text" id="eventDate" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={event.eventDate} />
+					<input placeholder="YYYY-MM-DD" type="text" id="eventDate" onChange={handleControlledInputChange} required autoFocus className="form-control" /> 
+                    
+                    {/* placeholder="Event date" value={event.eventDate} /> */}
 				</div>
 			</fieldset>
             <button type="button" className="btn btn-primary"
@@ -66,3 +68,4 @@ export const EventForm =() => {
 		</form>
 	)
  }
+//new Date("04/15/2022").getTime())

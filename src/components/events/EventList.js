@@ -33,15 +33,14 @@ export const EventList = () => {
      <button type="button"
      className="btn"
      onClick={() => {navigate("/events/create")}}>
-    <h3> Add New Event </h3>
+    <h3> Add Event </h3>
         </button>
     </section>
         <div className="container-cards">
        {events.map(event=> 
        <EventCard 
        key={event.id} 
-       event={event.description}
-       date={event.eventDate}
+       event={event}
        handleDeleteEvent= {handleDeleteEvent} />
        )}
         </div>

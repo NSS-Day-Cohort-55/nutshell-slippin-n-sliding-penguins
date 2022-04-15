@@ -17,7 +17,7 @@ export const EventCard = ({event, handleDeleteEvent}) => {
       </span></h6>
       <h6> Date: {event.eventDate}</h6>
       <h6>
-          <span className="eventcreated-date">{formatMDY(event.timestamp)}</span>
+          <span className="eventcreated-date">{`Posted: ${formatMDY(event.timestamp)}`}</span>
     </h6>
       </div>
       <Link to={`/events/${event.id}/edit`}>
