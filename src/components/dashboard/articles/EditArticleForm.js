@@ -2,15 +2,51 @@
 //Rushay
 
 import React, {useState, useEffect} from "react";
-import { addArticle, getSpecificArticle } from "../../../modules/articleManager";
+import { getSpecificArticle, updateArticle } from "../../../modules/articleManager";
 import { useNavigate, useParams } from "react-router-dom";
 
 
 
+
+
+
+
 export const EditArticleForm = () => {
-    const navigate= useNavigate()
-    const [article, setArticle] = useState();
+    //you absolutely need something in "useState", otherwise the page doesn't know
+    //how to render lines 87 93 and 99, which have a "value=article.title" or
+    //similar
+    const [article, setArticle] = useState({
+        id: 0,
+        userId: 0,
+        title: "",
+        synopsis: "",
+        url: "",
+        timestamp: 0
+    });
+    
     const {articleId} = useParams();
+    const navigate= useNavigate()
+
+    const handleChangedInfo = evt => {
+        const stateToChange = { ...article };
+        stateToChange[evt.target.id] = evt.target.value;
+        setArticle(stateToChange);
+    };
+
+    const UpdateArticleButtonAction = evt => {
+        evt.preventDefault()
+
+        const editedArticle = {
+            id: articleId,
+            userId: article.userId,
+            title: article.title,
+            synopsis: article.synopsis,
+            url: article.url,
+            timestamp: article.timestamp
+        };
+        //pass the editedArticle object to the database
+        updateEditedArticle(editedArticle)
+    }
 
     const getArticleToEdit = () =>{
         return getSpecificArticle(articleId).then(specificArticle =>{
@@ -19,41 +55,18 @@ export const EditArticleForm = () => {
     }
 
     useEffect(() => {
-        getArticleToEdit();
-        console.log("It's all set and ready to go")
-        console.log(article)
+        getArticleToEdit()
       }, []);
 
 
-    //Here we will collect the userId and the Timestamp
-    const theDate=Date.now()
-    const theUserId=sessionStorage.getItem("nutshell_user")
     
-
-    const handleControlledInputChange = (event) => {
-		// This creates a new article object
-		const newArticle = { ...article }
-		let selectedVal = event.target.value
-
-		// forms always provide values as strings. But we want to save the ids as numbers.
-		if (event.target.id.includes("Id")) {
-			selectedVal = parseInt(selectedVal)
-		}
-		/* Article is an object with properties.
-		Set the property to the new value
-		using object bracket notation. */
-		newArticle[event.target.id] = selectedVal
-		// update state
-        newArticle.timestamp = theDate
-        newArticle.userId = theUserId
-		setArticle(newArticle)
-	}
-
-    
-
-    const saveToArticles = (event) => {
-        addArticle(article).then(() =>navigate("/"))
+    const updateEditedArticle = (newObject) => {
+        updateArticle(newObject).then(() =>navigate("/"))
     }
+
+
+    
+
 
 
 
@@ -72,23 +85,23 @@ export const EditArticleForm = () => {
                         <fieldset>
                             <div className="form-group">
                                 <label htmlFor="title">Title:</label>
-                                <input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Great News Title" value={article.title}/>
+                                <input type="text" id="title" onChange={handleChangedInfo} required autoFocus className="form-control" placeholder="Great News Title" value={article.title}/>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div className="form-group">
                                 <label htmlFor="synopsis">Synopsis:</label>
-                                <input type="text" id="synopsis" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="A quick recap" value={article.synopsis}  />
+                                <input type="text" id="synopsis" onChange={handleChangedInfo} required autoFocus className="form-control" placeholder="A quick recap" value={article.synopsis}  />
                             </div>
                         </fieldset>
                         <fieldset>
                             <div className="form-group">
                                 <label htmlFor="url">URL:</label>
-                                <input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Paste the url here" value={article.url}/>
+                                <input type="text" id="url" onChange={handleChangedInfo} required autoFocus className="form-control" placeholder="Paste the url here" value={article.url}/>
                             </div>
                         </fieldset>
                         <button >Close</button>
-                        <button onClick={saveToArticles}>Save</button>
+                        <button onClick={UpdateArticleButtonAction}>Save</button>
 
                     </div>
                 </div>

@@ -36,3 +36,13 @@ export const deleteArticle = id => {
       method: "DELETE"
     }).then(result => result.json())
 }
+
+export const updateArticle  = (object) => {
+	return fetch(`${remoteURL}/articles/${object.id}`, {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(object)
+	}).then(data => data.json());
+}
