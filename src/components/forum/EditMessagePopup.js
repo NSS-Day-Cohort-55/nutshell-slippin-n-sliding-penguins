@@ -1,3 +1,4 @@
+// popup for editing a message live on the message forum screen : Jae
 import React, { useState, useEffect } from "react";
 import { editMessage, getAllMessages } from "../../modules/forumDataManager.js";
 

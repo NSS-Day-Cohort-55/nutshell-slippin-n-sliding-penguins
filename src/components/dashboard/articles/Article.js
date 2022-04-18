@@ -7,7 +7,7 @@ import { deleteArticle } from "../../../modules/articleManager";
 import { formatMDY } from "../../../helpers/formatDate";
 import { Link } from "react-router-dom";
 
-export const Article = ({ object, getArticles }) => {
+export const Article = ({ object, getArticles, userId }) => {
   const handleDelete = () => {
     deleteArticle(object.id).then(() => getArticles());
   };
