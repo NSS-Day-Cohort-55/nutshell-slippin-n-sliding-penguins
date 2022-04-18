@@ -88,7 +88,7 @@ export const MessageInput = ({ userId, getMessages }) => {
             required
             autoFocus
             className="form-input"
-            placeholder="Enter a message here, use the @ symbol followed by a username to private message someone."
+            placeholder="Enter a message here, use the @ symbol followed by a username to private message someone. Click on a name in the chat to add that person."
             value={message.content}
           />
         </div>
