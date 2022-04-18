@@ -2,6 +2,9 @@ import React from "react";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { EventList } from "./events/EventList";
+import { EventForm } from "./events/EventForm";
+import { EventEditForm } from "./events/EventEditForm";
 import { Dashboard } from "./dashboard/Dashboard";
 import { MessageList } from "./forum/MessageList";
 import { TaskList } from "./tasks/TaskList";
@@ -23,6 +26,11 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route exact path="/" element={<Dashboard />} />
           <Route path="friends" element={<FriendsList />} />
           <Route path="messages" element={<MessageList />} />
+          <Route path="tasks" element={""} />
+
+          <Route path="events" element={<EventList />} />      
+          <Route path="/events/create" element={<EventForm/>} /> 
+          <Route path="/events/:eventId/edit" element={<EventEditForm/>} /> 
           <Route exact path="tasks" element={<TaskList />} />
           <Route path="tasks/add" element={<TaskForm />} />
           <Route path="tasks/:taskId/edit" element={<TaskEditForm/>}/>
