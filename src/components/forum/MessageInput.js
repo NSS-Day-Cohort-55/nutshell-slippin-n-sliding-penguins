@@ -77,12 +77,6 @@ export const MessageInput = ({ userId, getMessages }) => {
     }
   };
 
-  console.log(
-    friends.filter((friend) => friend.userId === message.recepientId).length > 0
-  );
-  console.log(friends);
-  console.log(message.recepientId);
-
   return (
     <div className="messageForm">
       <fieldset>
