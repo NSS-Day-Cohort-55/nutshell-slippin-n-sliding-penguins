@@ -75,7 +75,7 @@ export const Popup = (props) => {
       return;
     }
     if (
-      addFriend.userId != 0 &&
+      addFriend.userId !== 0 &&
       addFriend.userId !== addFriend.currentUserId &&
       exists === false
     ) {
@@ -105,7 +105,7 @@ export const Popup = (props) => {
           />
         </div>
         <button type="button" onClick={handleAddFriend}>
-          Add A Friend
+          Add Friend
         </button>
       </div>
     </div>
