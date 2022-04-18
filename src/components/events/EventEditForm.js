@@ -7,17 +7,20 @@ import { formatDate } from "../../helpers/formatDate";
 
 export const EventEditForm = () => {
     const [event, setEvent] = useState({
-        userId: 0,
+      
         description: "",
         location: "",
-        timestamp: "",
+      
         eventDate: Date.now()
     });
+  
     //define event
     const [changeDialog, setChangedDialog] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     //set isLoading
-    const [hasChanged, setHasChanged] = useState(false)
+    // const [hasChanged, setHasChanged] = useState(false)
+    
+    
     const {eventId} = useParams();
     // const history = useHistory();
     const navigate = useNavigate();
@@ -25,36 +28,44 @@ export const EventEditForm = () => {
 
  
 
-        const handleFieldChange = evt => {
+        const  handleEventDescriptionChange = evt => {
             const stateToChange = { ...event };
-            stateToChange[0][evt.target.id] = evt.target.value;
+            stateToChange[evt.target.id] = evt.target.value;
             setEvent(stateToChange);
-            setHasChanged(true)
-          };
-            //[evt.target.id]=== to evaluate ...then set to state to Change
-          const updateEvent = evt => {
-            evt.preventDefault()
-            if (hasChanged) {
-            setIsLoading(true);
         
+          };
+          
+        
+          const handleEventAddressChange = ( e ) => {
+            const newEvent = {...event};
+              newEvent.location = e.target.value
+          setEvent(newEvent)
             const editedEvent = {
-                id: event[0].id,
-                description: event[0].description,
-                location: event[0].location,
+                id: eventId,
+                description: event.description,
+                location: event.location,
                 userId: parseInt(sessionStorage.getItem("userId")),
                 timestamp: "",
                 eventDate: Date.now()
               };
 
-              //pass the editedEvent object to the database
-              updateEvent(editedEvent)
-              .then(() => navigate("/events")
-              )
-            }
-            else {
-              setChangedDialog(true);
-            }
-          }
+          //     pass the editedEvent object to the database
+            
+          
+         }
+         const updateEventEdit =()=> {
+         updateEvent(eventId, event)
+         //keep same order of parameters
+         .then(() => navigate("/events")
+         )
+         }
+         const handleEventDateChange = ( e ) => {
+          const newEvent = {...event};
+            newEvent.eventDate = e.target.value
+            
+        setEvent(newEvent)
+        console.log(event)
+      }
             useEffect(() => {
                 getEventById(eventId)
                   .then(event => {
@@ -62,8 +73,10 @@ export const EventEditForm = () => {
                     setIsLoading(false);
                   });
               }, []);
-
-              return (
+            
+            
+            
+      return (
                   <>
                   <form>
                 <fieldset>
@@ -72,8 +85,8 @@ export const EventEditForm = () => {
                      type="text"
                     required
                     className="form-control"
-                    onChange={handleFieldChange}
-                    id="name"
+                    onChange={handleEventDescriptionChange}
+                    id="description"
                     value={event.description}
                  />
                  <label htmlFor="description">Edit Event Description</label>
@@ -81,7 +94,7 @@ export const EventEditForm = () => {
                     type="text"
                     required
                     className="form-control"
-                    onChange={handleFieldChange}
+                    onChange={handleEventAddressChange}
                     id="location"
                     value={event.location}
                     />
@@ -90,7 +103,7 @@ export const EventEditForm = () => {
                 <fieldset>
                      <div className="form-group">
 					<label htmlFor="date">Edit Date of Event:</label>
-					<input type="text" id="eventDate" onChange={handleFieldChange} required autoFocus className="form-control" placeholder="Event date" value={event.timestamp} />
+					<input type="text" id="eventDate" onChange={handleEventDateChange} required autoFocus className="form-control" placeholder="Event date" value={event.timestamp} />
 				</div>
                     </fieldset>
                 <section className="form--submit">
@@ -100,7 +113,7 @@ export const EventEditForm = () => {
                 <div className="alignRight">
                     <button
                     type="button" disabled={isLoading}
-                onClick={updateEvent}
+                onClick={updateEventEdit}
                 className="btn btn-primary"
                 >Save Changes</button>
               
@@ -110,6 +123,5 @@ export const EventEditForm = () => {
       </form>
     </>
   );
-};
-
+      }
                 

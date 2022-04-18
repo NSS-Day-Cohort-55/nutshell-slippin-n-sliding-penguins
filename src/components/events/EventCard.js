@@ -9,7 +9,7 @@ export const EventCard = ({event, handleEdit, handleDeleteEvent}) => {
     console.log(event);
     return (
         <>
-<div className="card" id="event_{event.id}">
+<div className="card" id={`event_${event.id}`}>
     <div className="card-content">
     <h5> Event Name:</h5>
     <h6> Info: <span className="card-eventdescription">
@@ -22,7 +22,7 @@ export const EventCard = ({event, handleEdit, handleDeleteEvent}) => {
       </div>
       <section className ="card--modifiers">
       <Link to={`/events/${event.id}/edit`}>
-          <button id="edit" type="button" onClick={() => handleEdit(event.id)}>Edit</button>
+          <button id="edit" type="button" >Edit</button>
       </Link>
     
       <button id="delete" type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>

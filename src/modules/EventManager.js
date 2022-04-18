@@ -27,8 +27,9 @@ export const addEvent = (newEvent) => {
         body: JSON.stringify(newEvent)
     }).then(response => response.json())
 }
-export const updateEvent  = (editedEvent) => {
-	return fetch(`${remoteURL}/events`, {
+export const updateEvent  = (eventId, editedEvent) => {
+ 
+	return fetch(`${remoteURL}/events/${eventId}`, {
 		method: "PATCH",
 		headers: {
 			"Content-Type": "application/json"
