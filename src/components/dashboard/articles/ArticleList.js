@@ -13,34 +13,39 @@ export const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [friends, setFriends] = useState([]);
 
-  const theUser = sessionStorage.getItem("nutshell_user");
+  const theUser = parseInt(sessionStorage.getItem("nutshell_user"));
 
   const getArticles = () => {
-    return getAllArticles().then((arrayOfArticles) => {
-      setArticles(arrayOfArticles);
+    let friendIdArr = [];
+    friends.forEach((friend) => {
+      friendIdArr.push(friend.userId);
+    });
+
+    getAllArticles().then((arrayOfArticles) => {
+      const filteredArticles = arrayOfArticles.filter((article) => {
+        console.log(friendIdArr);
+        return friendIdArr.includes(article.userId);
+      });
+      console.log(filteredArticles);
+      setArticles(filteredArticles);
     });
   };
 
   useEffect(() => {
-    getArticles();
     getAllFriends(theUser).then((friendsAPI) => {
       setFriends(friendsAPI);
     });
   }, []);
 
-  const filteredArticles = articles.filter(
-    (article) => !friends.find(({ userId }) => article.userId === userId)
-  );
-
-  console.log(articles);
-  console.log(friends);
-  console.log(filteredArticles);
+  useEffect(() => {
+    getArticles();
+  }, []);
 
   return (
     <>
       <h2>My Articles</h2>
       <div className="articleCardsHolder">
-        {filteredArticles.map((singleArticle) => (
+        {articles.map((singleArticle) => (
           <Article
             key={singleArticle.id}
             object={singleArticle}
