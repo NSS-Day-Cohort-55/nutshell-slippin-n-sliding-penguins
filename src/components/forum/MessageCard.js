@@ -10,7 +10,7 @@ export const MessageCard = ({
   deleteMessage,
   userId,
   getFriends,
-  editMessage,
+  getMessages,
 }) => {
   // this is for managing state of the popup
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,12 @@ export const MessageCard = ({
             Edit
           </button>
           {messageIsOpen && (
-            <EditMessagePopup handleClose={toggleMessagePopup} />
+            <EditMessagePopup
+              handleClose={toggleMessagePopup}
+              content={message.content}
+              id={message.id}
+              getMessages={getMessages}
+            />
           )}
         </div>
       </div>
