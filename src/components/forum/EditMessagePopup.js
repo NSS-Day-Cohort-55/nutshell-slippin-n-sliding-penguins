@@ -18,7 +18,6 @@ export const EditMessagePopup = (props) => {
 
   const handleSaveEdit = (e) => {
     e.preventDefault();
-    console.log(editedMessage);
 
     editMessage(editedMessage).then(() => props.getAllMessages);
     props.handleClose();
