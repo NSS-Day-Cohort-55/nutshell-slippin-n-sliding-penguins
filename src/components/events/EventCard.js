@@ -5,13 +5,13 @@ import "./Event.css";
 import { formatMDY } from "../../helpers/formatDate";
 import {Link } from "react-router-dom"
 
-export const EventCard = ({event, handleDeleteEvent}) => {
+export const EventCard = ({event, handleEdit, handleDeleteEvent}) => {
     console.log(event);
     return (
         <>
 <div className="card" id="event_{event.id}">
     <div className="card-content">
-    <h5> Event</h5>
+    <h5> Event Name:</h5>
     <h6> Info: <span className="card-eventdescription">
         {event.description}
       </span></h6>
@@ -20,10 +20,13 @@ export const EventCard = ({event, handleDeleteEvent}) => {
           <span className="eventcreated-date">{`Posted: ${formatMDY(event.timestamp)}`}</span>
     </h6>
       </div>
+      <section className ="card--modifiers">
       <Link to={`/events/${event.id}/edit`}>
-          <button>Edit Event</button>
+          <button id="edit" type="button" onClick={() => handleEdit(event.id)}>Edit</button>
       </Link>
-      <button type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
+    
+      <button id="delete" type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
+      </section>
       </div>
       
       </>

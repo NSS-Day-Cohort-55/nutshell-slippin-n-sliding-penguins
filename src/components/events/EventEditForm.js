@@ -1,56 +1,49 @@
 //component engineered by SC
 import React, { useState, useEffect } from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams, Link} from "react-router-dom";
 import { updateEvent, getEventById } from "../../modules/EventManager";
 import "./EventForm.css";
+import { formatDate } from "../../helpers/formatDate";
 
 export const EventEditForm = () => {
     const [event, setEvent] = useState({
-        userId: "",
+        userId: 0,
         description: "",
         location: "",
         timestamp: "",
         eventDate: Date.now()
     });
     //define event
+    const [changeDialog, setChangedDialog] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     //set isLoading
-
+    const [hasChanged, setHasChanged] = useState(false)
     const {eventId} = useParams();
+    // const history = useHistory();
     const navigate = useNavigate();
+   
 
-    // const handleControlledInputChange = (event) => {
-	// 	/* When changing a state object or array,
-	// 	always create a copy, make changes, and then set state. the input fields, are controlled by what's in state, represent what's in state*/
-	// 	const newEvent = { ...event }
-	// 	let selectedVal = event.target.value
-    //     //... is spread operator, create a copy 
-    //     //this becomes the field of the value we're editing
-	// 	// forms always provide values as strings. But we want to save the ids as numbers.
-	// 	if (event.target.id.includes("Id")) {
-	// 		selectedVal = parseInt(selectedVal)
-	// 	}
-        
-    //     newEvent[event.target.id] = selectedVal
-    //     setEvent(newEvent)
-    // }
+ 
 
         const handleFieldChange = evt => {
             const stateToChange = { ...event };
-            stateToChange[evt.target.id] = evt.target.value;
+            stateToChange[0][evt.target.id] = evt.target.value;
             setEvent(stateToChange);
+            setHasChanged(true)
           };
             //[evt.target.id]=== to evaluate ...then set to state to Change
-          const updateExistingEvent = evt => {
+          const updateEvent = evt => {
             evt.preventDefault()
+            if (hasChanged) {
             setIsLoading(true);
         
             const editedEvent = {
-                id: eventId,
-                description: event.description,
-                location: event.location,
+                id: event[0].id,
+                description: event[0].description,
+                location: event[0].location,
+                userId: parseInt(sessionStorage.getItem("userId")),
                 timestamp: "",
-                 eventDate: Date.now()
+                eventDate: Date.now()
               };
 
               //pass the editedEvent object to the database
@@ -58,6 +51,10 @@ export const EventEditForm = () => {
               .then(() => navigate("/events")
               )
             }
+            else {
+              setChangedDialog(true);
+            }
+          }
             useEffect(() => {
                 getEventById(eventId)
                   .then(event => {
@@ -70,7 +67,7 @@ export const EventEditForm = () => {
                   <>
                   <form>
                 <fieldset>
-                 <div className="formgrid">
+                 <div className="editForm--container">
                      <input
                      type="text"
                     required
@@ -79,7 +76,7 @@ export const EventEditForm = () => {
                     id="name"
                     value={event.description}
                  />
-                 <label htmlFor="description">Event Description</label>
+                 <label htmlFor="description">Edit Event Description</label>
                 <input
                     type="text"
                     required
@@ -88,21 +85,27 @@ export const EventEditForm = () => {
                     id="location"
                     value={event.location}
                     />
-                    <label htmlFor="location">Event Location</label>
+                    <label htmlFor="location">Edit Event Location</label>
                 </div>
                 <fieldset>
                      <div className="form-group">
-					<label htmlFor="date">Date of Event:</label>
+					<label htmlFor="date">Edit Date of Event:</label>
 					<input type="text" id="eventDate" onChange={handleFieldChange} required autoFocus className="form-control" placeholder="Event date" value={event.timestamp} />
 				</div>
                     </fieldset>
+                <section className="form--submit">
+                  <Link to ="/events">
+                    <button id="return"> Return to Events </button>
+                  </Link>
                 <div className="alignRight">
                     <button
                     type="button" disabled={isLoading}
-                onClick={updateExistingEvent}
+                onClick={updateEvent}
                 className="btn btn-primary"
                 >Save Changes</button>
+              
           </div>
+          </section>
         </fieldset>
       </form>
     </>

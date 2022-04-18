@@ -6,33 +6,38 @@ import './EventForm.css'
 
 export const EventForm =() => {
     const [event, setEvent] = useState({
-        userId: "",
+        userId: parseInt(sessionStorage.getItem("nutshell_user")),
         description: "",
         location: "",
-        timestamp: "",
-        eventDate: Date.now()
+        timestamp: Date.now(),
+        eventDate: ""
     });
 //state will contain both event data as well as isLoading
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const newEvent = { ...event}
 //constrolled component--what is in state
-    const handleControlledInputChange = ( e ) => {
-        const newEvent = { ...event}
-        let selectedVal = event.target.value  
-        //this becomes the field of the value we're editing
-        // forms provide values as strings; want to save the ids as numbers 
-    if (event.target.id.includes("Id")) {
-        selectedVal = parseInt(selectedVal)
-    } 
-    newEvent[event.target.id] = selectedVal
-    //connect the input and ids to match properties on lns 8-11
+    const handleEventDescriptionChange = ( e ) => {
+        newEvent.description = e.target.value
     setEvent(newEvent)
 
     }
+    const handleEventAddressChange = ( e ) => {
+        newEvent.location = e.target.value
+    setEvent(newEvent)
 
-    
-    const handleClickSaveEvent = (event) => {
-        event.preventDefault() //prevents browser from submitting form until ready
+    }
+    const handleEventDateChange = ( e ) => {
+        newEvent.eventDate = e.target.value
+        
+    setEvent(newEvent)
+    console.log(event)
+
+
+    }
+    const handleClickSaveEvent = (e) => {
+        e.preventDefault() //prevents browser from submitting form until ready
+        console.log(event)
         addEvent(event)
         .then(() => navigate("/events"))
         
@@ -44,21 +49,21 @@ export const EventForm =() => {
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="description"> Description:</label>
-					<input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event name" value={event.description} />
+					<input type="text" id="name" onChange={handleEventDescriptionChange} required autoFocus className="form-control" placeholder="Event name" value={event.description} />
 				</div>
 			</fieldset>
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="location">Event Location:</label>
-					<input type="text" id="address" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event address" value={event.location} />
+					<input type="text" id="address" onChange={handleEventAddressChange} required autoFocus className="form-control" placeholder="Event address" value={event.location} />
 				</div>
 			</fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Date of Event:</label>
-					<input placeholder="YYYY-MM-DD" type="text" id="eventDate" onChange={handleControlledInputChange} required autoFocus className="form-control" /> 
+					<input placeholder="YYYY-MM-DD" type="text" id="eventDate" onChange={handleEventDateChange} required autoFocus className="form-control" value={event.eventDate} /> 
                     
-                    {/* placeholder="Event date" value={event.eventDate} /> */}
+                    
 				</div>
 			</fieldset>
             <button type="button" className="btn btn-primary"
@@ -68,4 +73,3 @@ export const EventForm =() => {
 		</form>
 	)
  }
-//new Date("04/15/2022").getTime())
