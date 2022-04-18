@@ -10,8 +10,6 @@ import { TaskEditForm } from "./tasks/TaskEditForm"
 import { CreateArticleForm} from "./dashboard/articles/CreateArticleForm";
 import { EditArticleForm} from "./dashboard/articles/EditArticleForm"
 import { FriendsList } from "./friends/FriendsList";
-import { CreateArticleForm } from "./dashboard/articles/CreateArticleForm";
-import { EditArticleForm } from "./dashboard/articles/EditArticleForm";
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
