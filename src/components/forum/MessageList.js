@@ -1,6 +1,7 @@
 // Module programmed by Jae, should create a list of messages by passing information to message card.
 import React, { useState, useEffect, useRef } from "react";
 import * as fetch from "../../modules/forumDataManager.js";
+import { getAllFriends } from "../../modules/friendsManager.js";
 import { MessageCard } from "./MessageCard.js";
 import { MessageInput } from "./MessageInput.js";
 import "./MessageList.css";
@@ -8,10 +9,17 @@ import "./MessageList.css";
 export const MessageList = () => {
   const [messages, setMessages] = useState([]);
   const userId = parseInt(sessionStorage.getItem("nutshell_user"));
+  const [friends, setFriends] = useState([]);
 
   const getMessages = () => {
     return fetch.getAllMessages().then((messages) => {
       setMessages(messages);
+    });
+  };
+
+  const getFriends = () => {
+    return getAllFriends(userId).then((friends) => {
+      setFriends(friends);
     });
   };
 
@@ -58,6 +66,7 @@ export const MessageList = () => {
             message={message}
             key={message.id}
             deleteMessage={deleteMessage}
+            getFriends={getFriends}
           />
         ))}
         <div ref={messageEndRef}></div>

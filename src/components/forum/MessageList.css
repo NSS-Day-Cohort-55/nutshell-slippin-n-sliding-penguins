@@ -24,6 +24,10 @@
     padding-right: 10px;
 }
 
+.message-name:hover {
+    cursor: pointer;
+}
+
 #content {
     width: 100%;
 }
