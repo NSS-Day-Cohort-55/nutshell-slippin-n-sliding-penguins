@@ -33,6 +33,8 @@ export const MessageList = () => {
     getMessages();
   }, []);
 
+  setTimeout(getMessages, 60000);
+
   // sorts msgs by timestamp and filters out private messages not directed at the user
   messages.sort(function (x, y) {
     return x.timestamp - y.timestamp;
