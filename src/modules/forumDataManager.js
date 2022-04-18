@@ -25,3 +25,13 @@ export const addMessage = (newMessage) => {
 export const getAllUsers = () => {
   return fetch(`${remoteURL}/users`).then((res) => res.json());
 };
+
+export const editMessage = (editedMessage) => {
+  return fetch(`${remoteURL}/messages/${editedMessage.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(editedMessage),
+  }).then((data) => data.json());
+};

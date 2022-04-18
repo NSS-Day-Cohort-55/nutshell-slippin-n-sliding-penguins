@@ -2,14 +2,26 @@
 
 import React, { useState } from "react";
 import { formatMDY } from "../../helpers/formatDate";
-import { Popup } from "../friends/AddFriendsPopup";
+import { AddFriendsPopup } from "../friends/AddFriendsPopup";
+import { EditMessagePopup } from "./EditMessagePopup.js";
 
-export const MessageCard = ({ message, deleteMessage, userId, getFriends }) => {
+export const MessageCard = ({
+  message,
+  deleteMessage,
+  userId,
+  getFriends,
+  editMessage,
+}) => {
   // this is for managing state of the popup
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+  };
+
+  const [messageIsOpen, setMessageIsOpen] = useState(false);
+  const toggleMessagePopup = () => {
+    setMessageIsOpen(!messageIsOpen);
   };
 
   // user messages rendered slightly differently
@@ -32,6 +44,12 @@ export const MessageCard = ({ message, deleteMessage, userId, getFriends }) => {
           <button type="button" onClick={() => deleteMessage(message.id)}>
             X
           </button>
+          <button type="button" onClick={toggleMessagePopup}>
+            Edit
+          </button>
+          {messageIsOpen && (
+            <EditMessagePopup handleClose={toggleMessagePopup} />
+          )}
         </div>
       </div>
     );
@@ -44,7 +62,7 @@ export const MessageCard = ({ message, deleteMessage, userId, getFriends }) => {
               {message.user?.name}
             </span>
             {isOpen && (
-              <Popup
+              <AddFriendsPopup
                 handleClose={togglePopup}
                 getFriends={getFriends}
                 name={message.user.name}

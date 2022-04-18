@@ -4,9 +4,8 @@ import {
   addAFriend,
   getAllFriends,
 } from "../../modules/friendsManager.js";
-import "./popup.css";
 
-export const AddFriendsPopup = (props) => {
+export const EditMessagePopup = (props) => {
   // for handling popup input
   const [addFriend, setAddedFriend] = useState({
     userId: props.messageUserId ? props.messageUserId : 0,

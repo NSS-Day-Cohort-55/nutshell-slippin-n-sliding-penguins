@@ -29,6 +29,10 @@ export const MessageList = () => {
       .then(() => fetch.getAllMessages().then(setMessages));
   };
 
+  const editMessages = (id) => {
+    fetch.editMessage(id).then(() => fetch.getAllMessages().then(setMessages));
+  };
+
   useEffect(() => {
     getMessages();
   }, []);
@@ -68,6 +72,7 @@ export const MessageList = () => {
             message={message}
             key={message.id}
             deleteMessage={deleteMessage}
+            editMessage={editMessages}
             getFriends={getFriends}
           />
         ))}
