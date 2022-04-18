@@ -72,6 +72,11 @@ export const MessageInput = ({ userId, getMessages }) => {
       addMessage(message).then(getMessages);
       message.content = "";
       return;
+    }
+    if (message.content.startsWith("@") === false) {
+      addMessage(message).then(getMessages);
+      message.content = "";
+      return;
     } else {
       alert("You cannot private message users you do not have added!");
     }
