@@ -7,33 +7,30 @@ import { addTask } from '../../modules/TaskDataManager';
 export const TaskForm = () => {
   const navigate = useNavigate()
   const [tasks, setTasks] = useState({
-    userId: 0,
+    userId: parseInt(sessionStorage.getItem("nutshell_user")),
     taskDescription: "",
     isComplete: false,
     dateDue: ""
   });
 
   const theDate=Date.now()
-  const theUserId=sessionStorage.getItem("nutshell_user")
-  
-  // const [isLoading, setIsLoading] = useState(false)
+
+  const newTask = {...tasks}
 
   const handleControlledInputChange = (evt) => {
     // This creates a new task object
-    const newTask = {...tasks}
-    let selectedVal = evt.target.value
-
-
-    if (evt.target.id.includes("Id")) {
-			selectedVal = parseInt(selectedVal)
-		}
-		
-		newTask[evt.target.id] = selectedVal
-		
-        newTask.timestamp = theDate
-        newTask.userId = theUserId
+    
+    
+    newTask.taskDescription = evt.target.value
+    newTask.timestamp = theDate
+        
 		setTasks(newTask)
+   }
 
+   const handleControlledDateChange = (evt) => {
+        newTask.dateDue = evt.target.value
+
+        setTasks(newTask)
    }
 
   const handleClickSaveTask = (evt) => {
@@ -56,7 +53,7 @@ export const TaskForm = () => {
       <fieldset>
         <div className="form-group">
 					<label htmlFor="dateDue">Completion Date:</label>
-					<input type="date" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Task date" value={tasks.dateDue} />
+					<input type="date" id="date" onChange={handleControlledDateChange} required autoFocus className="form-control" placeholder="Task date" value={tasks.dateDue} />
 				</div>
       </fieldset>
       

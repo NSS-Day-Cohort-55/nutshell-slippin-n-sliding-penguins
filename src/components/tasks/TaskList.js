@@ -17,16 +17,12 @@ export const TaskList =() => {
         })        
     }
 
-    const handleDeleteTask = id => {
-        deleteTask(id)
-        .then(() => getAllTasks().then(setTasks))
-    }
+    
 
     const handleUpdateTask = (id) => {
         const editedTask = {
             id: id,
             dateDue: "",
-            // taskDescription: "",
             isComplete: true
         }
         updateTask(editedTask).then(() => getAllTasks().then(setTasks))
@@ -44,14 +40,19 @@ export const TaskList =() => {
             onClick={() => {navigate("/tasks/add")}}>New Task!</button>
         </section>
         <div className="container-cards">
-            {tasks.map(task =>
-                <TaskCard
+            {tasks.map((task) => {
+                if(task.isComplete === false){
+                    return (
+              <TaskCard
                     key={task.id}
                     // tasks={tasks}
                     singleTask={task}
-                    handleDeleteTask={handleDeleteTask}
+                    getTasks={getTasks}
+                    // handleDeleteTask={handleDeleteTask}
                     handleUpdateTask={handleUpdateTask} />  
-                    )}
+                    )}}  
+                    
+            )}
         </div>                                    
         </>
     )

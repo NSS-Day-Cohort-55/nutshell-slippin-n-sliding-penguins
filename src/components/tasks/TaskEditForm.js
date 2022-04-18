@@ -11,10 +11,11 @@ export const TaskEditForm = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const { taskId } = useParams()
-    const [task, setTasks] = useState({objective: "", dateDue: ""}) 
+    const [task, setTasks] = useState({taskDescription: "", dateDue: ""}) 
 
+
+    const stateToChange = { ...task }
     const handleFieldChange = (evt) => {
-        const stateToChange = { ...task }
         stateToChange[evt.target.id] = evt.target.value
         setTasks(stateToChange)
     }
@@ -28,6 +29,8 @@ export const TaskEditForm = () => {
             taskDescription: task.taskDescription,
             dateDue: task.dateDue
         }
+        
+
         updateEditedTask(editedTask)
     } 
 
@@ -35,21 +38,18 @@ export const TaskEditForm = () => {
       return getSpecificTask(taskId).then(specificTask =>{
           setTasks(specificTask)
       })
-  }
+    }
  
+  
 
     const updateEditedTask = (newObject) => {
       updateTask(newObject).then(() =>navigate("/tasks"))
-      }    
+    }    
 
     useEffect(() => {
-
-        getTaskToEdit(taskId)
-          .then(task => {
-            setTasks(task);
-            setIsLoading(false);
-          });
-      }, []);
+      getTaskToEdit()
+      setIsLoading(false)          
+      }, [])
 
 
     return (
@@ -73,7 +73,7 @@ export const TaskEditForm = () => {
                   required
                   className="form-control"
                   onChange={handleFieldChange}
-                  id="dueDate"
+                  id="dateDue"
                   value={task.dateDue}
                 />
                 
