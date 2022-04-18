@@ -2,7 +2,8 @@
 
 import "./Dashboard.css"
 import { ArticleList } from "./articles/ArticleList"
-import { EventList } from "../events/EventList.js"
+import { EventList } from "../events/EventList.js";
+import { FriendsList } from "../friends/FriendsList";
 
 export const Dashboard = () => {
 
@@ -15,9 +16,13 @@ export const Dashboard = () => {
             <div className="dash_main">
                 <div className="dash_events">< EventList/> </div>
                 <div className="dash_news">< ArticleList/></div>
-                <div className="dash_friends">friends go here</div>                         
+                <div className="dash_friends"> <FriendsList/></div>                         
             </div>
         </>
     )
 
 }
+
+
+
+

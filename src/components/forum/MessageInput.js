@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { addMessage } from "../../modules/forumDataManager";
 import { getAllUsers } from "../../modules/forumDataManager";
+import { getAllFriends } from "../../modules/friendsManager";
 
 export const MessageInput = ({ userId, getMessages }) => {
   const [message, setMessage] = useState({
@@ -12,6 +13,14 @@ export const MessageInput = ({ userId, getMessages }) => {
   });
 
   const [users, setUsers] = useState([]);
+  const [friends, setFriends] = useState([]);
+
+  // get Friends from database
+  useEffect(() => {
+    getAllFriends(userId).then((friendsAPI) => {
+      setFriends(friendsAPI);
+    });
+  }, []);
 
   // get users from database
   useEffect(() => {
@@ -28,7 +37,6 @@ export const MessageInput = ({ userId, getMessages }) => {
     const newMessage = { ...message };
     newMessage.content = e.target.value;
     // target specific user function, removes spaces and takes first word after @ symbol
-    // TODO: ONLY BE ABLE TO @ FRIENDS
     if (e.target.value.startsWith(`@`)) {
       let removeSymbol = e.target.value.split("@")[1];
       let getName = removeSymbol.split(" ")[0];
@@ -50,20 +58,32 @@ export const MessageInput = ({ userId, getMessages }) => {
   const handleSendMessage = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
     if (message.recepientId === userId) {
-      alert("you cannot private message yourself");
+      alert("You cannot private message yourself!");
       return;
     }
     if (message.recepientId === 0 && username !== " ") {
-      alert("user does not exist");
+      alert("User does not exist!");
       return;
-    } else {
+    }
+    if (
+      friends.filter((friend) => friend.userId === message.recepientId).length >
+      0
+    ) {
       addMessage(message).then(getMessages);
       message.content = "";
+      return;
+    }
+    if (message.content.startsWith("@") === false) {
+      addMessage(message).then(getMessages);
+      message.content = "";
+      return;
+    } else {
+      alert("You cannot private message users you do not have added!");
     }
   };
 
   return (
-    <form className="messageForm">
+    <div className="messageForm">
       <fieldset>
         <div className="form-group">
           <input
@@ -73,7 +93,7 @@ export const MessageInput = ({ userId, getMessages }) => {
             required
             autoFocus
             className="form-input"
-            placeholder="Enter a message here, use the @ symbol followed by a username to private message them."
+            placeholder="Enter a message here, use the @ symbol followed by a username to private message someone. Click on a name in the chat to add that person."
             value={message.content}
           />
         </div>
@@ -81,6 +101,6 @@ export const MessageInput = ({ userId, getMessages }) => {
       <button type="button" className="btn-send" onClick={handleSendMessage}>
         Send Message
       </button>
-    </form>
+    </div>
   );
 };
