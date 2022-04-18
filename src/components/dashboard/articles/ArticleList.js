@@ -4,6 +4,7 @@
 //Rushay && Jae
 
 import { getAllArticles } from "../../../modules/articleManager";
+import { getAllFriends } from "../../../modules/friendsManager";
 import React, { useEffect, useState } from "react";
 import { Article } from "./Article.js";
 import { Link } from "react-router-dom";
@@ -22,13 +23,24 @@ export const ArticleList = () => {
 
   useEffect(() => {
     getArticles();
+    getAllFriends(theUser).then((friendsAPI) => {
+      setFriends(friendsAPI);
+    });
   }, []);
+
+  const filteredArticles = articles.filter(
+    (article) => !friends.find(({ userId }) => article.userId === userId)
+  );
+
+  console.log(articles);
+  console.log(friends);
+  console.log(filteredArticles);
 
   return (
     <>
       <h2>My Articles</h2>
       <div className="articleCardsHolder">
-        {articles.map((singleArticle) => (
+        {filteredArticles.map((singleArticle) => (
           <Article
             key={singleArticle.id}
             object={singleArticle}
