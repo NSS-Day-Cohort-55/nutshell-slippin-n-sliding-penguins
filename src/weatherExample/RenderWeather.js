@@ -26,3 +26,25 @@ export const renderWeather = (city, state) => {
       });
   });
 };
+
+export const renderDailyWeather = (city, state) => {
+  WeatherDataManager.getGeocode(city, state).then((parsedResponse) => {
+    WeatherDataManager.getWeatherReport(
+      parsedResponse[0].lat,
+      parsedResponse[0].lon
+    )
+      .then((parsedResponse) => {
+        weatherObject = {
+          weather: parsedResponse.daily[i].weather[0].main,
+          iconUrl: `http://openweathermap.org/img/wn/${parsedResponse.daily[i].weather[0].icon}@2x.png`,
+          tempHi: `${parseInt(parsedResponse.daily[0].temp.max)}°F`,
+          tempLow: `${parseInt(parsedResponse.daily[0].temp.min)}°F`,
+          date: `${parsedResponse.daily[0].dt}`,
+        };
+        
+      })
+      .then(() => {
+        weatherReport(weatherObject);
+      });
+  });
+};
