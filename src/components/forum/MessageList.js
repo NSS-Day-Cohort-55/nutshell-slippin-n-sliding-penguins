@@ -35,7 +35,7 @@ export const MessageList = () => {
 
   useEffect(() => {
     getMessages();
-  }, [messages]);
+  }, []);
 
   // sorts msgs by timestamp and filters out private messages not directed at the user
   messages.sort(function (x, y) {

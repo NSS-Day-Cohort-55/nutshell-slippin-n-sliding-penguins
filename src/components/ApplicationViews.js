@@ -32,16 +32,13 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route exact path="tasks" element={<TaskList />} />
           <Route path="tasks/add" element={<TaskForm />} />
           <Route path="tasks/:taskId/edit" element={<TaskEditForm/>}/>
-          <Route path="events" element={""} /></Route>
-          <Route path="events" element={""} />
+          </Route>
+          
           <Route path="createArticle" element={<CreateArticleForm/>}/>
           <Route path="/editArticle/:articleId" element={<EditArticleForm/>}/>        
           <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
           <Route path="/register" element={<Register />} />     
-          <Route path="createArticle" element={<CreateArticleForm />} />
-          <Route path="/editArticle/:articleId" element={<EditArticleForm />} />        
-        <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
-        <Route path="/register" element={<Register />} />
+          
       </Routes>
     </>
   );
