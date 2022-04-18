@@ -22,35 +22,23 @@ export const TaskList =() => {
         .then(() => getAllTasks().then(setTasks))
     }
 
-    const handleupdateTask = (id) => {
-        const editTask = {
+    const handleUpdateTask = (id) => {
+        const editedTask = {
             id: id,
             dateDue: "",
             // taskDescription: "",
             isComplete: true
         }
-        updateTask(editTask).then(() => getAllTasks().then(setTasks))
+        updateTask(editedTask).then(() => getAllTasks().then(setTasks))
     }
-
-    // const handleEditTask = id => {
-    //     navigate(`/tasks/${id}/edit`)
-    //     .then(() => getAllTasks().then(setTasks));
-    // };
-
-    // useEffect(() => {
-    //     getTasks()
-    // }, [])
-
-
-
-
-
-
+    useEffect(() => {
+        getTasks()
+    }, [])
 
 
     return (
         <>
-        <section className="section-cards">
+        <section className="task-cards">
         <button type="button"
             className="btn"
             onClick={() => {navigate("/tasks/add")}}>New Task!</button>
@@ -59,9 +47,10 @@ export const TaskList =() => {
             {tasks.map(task =>
                 <TaskCard
                     key={task.id}
+                    // tasks={tasks}
                     singleTask={task}
                     handleDeleteTask={handleDeleteTask}
-                    handleupdateTask={handleupdateTask}/>
+                    handleUpdateTask={handleUpdateTask} />  
                     )}
         </div>                                    
         </>

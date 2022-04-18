@@ -2,34 +2,43 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addTask, getAllTasks } from '../../modules/TaskDataManager';
+import { addTask } from '../../modules/TaskDataManager';
 
 export const TaskForm = () => {
-  //TODO Make isComplete statement show string "Not Complete" instead of false
+  const navigate = useNavigate()
   const [tasks, setTasks] = useState({
-    userId: JSON.parse(sessionStorage.getItem("nutshell_user")).id,
+    userId: 0,
     taskDescription: "",
     isComplete: false,
     dateDue: ""
-    // timeStamp: new Date().toISOString()
   });
 
-  const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(false)
+  const theDate=Date.now()
+  const theUserId=sessionStorage.getItem("nutshell_user")
+  
+  // const [isLoading, setIsLoading] = useState(false)
 
-  const handleControlledInputChange = (event) => {
-    const newTask = { tasks, setTasks }
-    let selectedVal = event.target.value
+  const handleControlledInputChange = (evt) => {
+    // This creates a new task object
+    const newTask = {...tasks}
+    let selectedVal = evt.target.value
 
-    newTask[event.target.id] = selectedVal
-      setTasks(newTask)
+
+    if (evt.target.id.includes("Id")) {
+			selectedVal = parseInt(selectedVal)
+		}
+		
+		newTask[evt.target.id] = selectedVal
+		
+        newTask.timestamp = theDate
+        newTask.userId = theUserId
+		setTasks(newTask)
+
    }
 
-  const handleClickSaveTask = (event) => {
-     	event.preventDefault()
-       		
-			  addTask(tasks)
-        .then(() => navigate("/tasks"))
+  const handleClickSaveTask = (evt) => {
+     	evt.preventDefault()
+			  addTask(tasks).then(() => navigate("/tasks"))
 		
 	}
 
@@ -39,7 +48,8 @@ export const TaskForm = () => {
       <fieldset>
         <div className="form-group">
           <label htmlFor="name">Task Name:</label>
-          <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="New Task" value={tasks.name} />
+          <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="New Task" value=
+          {tasks.taskDescription} />
         </div>
       </fieldset>
 
@@ -61,3 +71,5 @@ export const TaskForm = () => {
     </form>
   );
 };
+
+

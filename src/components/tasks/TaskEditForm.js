@@ -3,19 +3,53 @@
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
-import { getTaskById, updateTask } from "../../modules/TaskDataManager"
+import { updateTask, getSpecificTask } from "../../modules/TaskDataManager"
 import "./TaskEditForm.css"
 
 
 export const TaskEditForm = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const { taskId } = useParams()
     const [task, setTasks] = useState({objective: "", dateDue: ""}) 
-}
 
-    updateCurrentTask = 
+    const handleFieldChange = (evt) => {
+        const stateToChange = { ...task }
+        stateToChange[evt.target.id] = evt.target.value
+        setTasks(stateToChange)
+    }
 
+    const updateCurrentTask = (evt)  => {
+        evt.preventDefault()
+        setIsLoading(true)
+
+        const editedTask = {
+            id: taskId,
+            taskDescription: task.taskDescription,
+            dateDue: task.dateDue
+        }
+        updateEditedTask(editedTask)
+    } 
+
+    const getTaskToEdit = () =>{
+      return getSpecificTask(taskId).then(specificTask =>{
+          setTasks(specificTask)
+      })
+  }
+ 
+
+    const updateEditedTask = (newObject) => {
+      updateTask(newObject).then(() =>navigate("/tasks"))
+      }    
+
+    useEffect(() => {
+
+        getTaskToEdit(taskId)
+          .then(task => {
+            setTasks(task);
+            setIsLoading(false);
+          });
+      }, []);
 
 
     return (
@@ -23,14 +57,14 @@ export const TaskEditForm = () => {
           <form>
             <fieldset>
               <div className="formgrid">
-              <label htmlFor="name">What do you need to get done?</label>
+              <label htmlFor="taskDescription">Changed your mind?</label>
                 <input
                   type="text"
                   required
                   className="form-control"
                   onChange={handleFieldChange}
-                  id="objective"
-                  value={task.objective}
+                  id="taskDescription"
+                  value={task.taskDescription}
                 />
                 
                 <label htmlFor="dateDue">Due By:</label>
@@ -56,5 +90,5 @@ export const TaskEditForm = () => {
           </form>
         </>
       );
+    }
 
-}
