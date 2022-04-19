@@ -1,10 +1,10 @@
 import * as WeatherDataManager from "./WeatherDataManager.js";
-import { weatherReport } from "./WeatherCardHTML.js";
+import { weatherReport, DailyWeatherReport } from "./WeatherCardHTML.js";
 
-const weatherArr = [];
+let weatherArr = [];
 
 // get geocode using openweather api then pass that to get weather report to generate weather report data then take that data and turn it into an array of objs to be rendered on the dom
-export const renderWeather = (city, state) => {
+export const RenderWeather = (city, state) => {
   WeatherDataManager.getGeocode(city, state).then((parsedResponse) => {
     WeatherDataManager.getWeatherReport(
       parsedResponse[0].lat,
@@ -21,13 +21,26 @@ export const renderWeather = (city, state) => {
           };
         }
       })
-      .then(() => {
-        weatherReport(weatherArr);
-      });
   });
+  return(
+    <>
+      weatherArr.map
+    </>
+  )
+
+
 };
 
-export const renderDailyWeather = (city, state) => {
+export const renderDailyWeather = ({city, state}) => {
+  console.log(city)
+  console.log(state)
+  let weatherObject = {
+    weather:"",
+    iconUrl:"",
+    tempHi:"",
+    tempLow:"",
+    date:""
+  }
   WeatherDataManager.getGeocode(city, state).then((parsedResponse) => {
     WeatherDataManager.getWeatherReport(
       parsedResponse[0].lat,
@@ -35,16 +48,19 @@ export const renderDailyWeather = (city, state) => {
     )
       .then((parsedResponse) => {
         weatherObject = {
-          weather: parsedResponse.daily[i].weather[0].main,
-          iconUrl: `http://openweathermap.org/img/wn/${parsedResponse.daily[i].weather[0].icon}@2x.png`,
+          weather: parsedResponse.daily[0].weather[0].main,
+          iconUrl: `http://openweathermap.org/img/wn/${parsedResponse.daily[0].weather[0].icon}@2x.png`,
           tempHi: `${parseInt(parsedResponse.daily[0].temp.max)}°F`,
           tempLow: `${parseInt(parsedResponse.daily[0].temp.min)}°F`,
           date: `${parsedResponse.daily[0].dt}`,
         };
         
       })
-      .then(() => {
-        weatherReport(weatherObject);
-      });
+       
+      
+  
   });
+  return weatherObject
 };
+
+// dailyWeatherReport(weatherObject);

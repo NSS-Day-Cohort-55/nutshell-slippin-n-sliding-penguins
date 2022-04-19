@@ -5,6 +5,9 @@
 
 import React, { useEffect, useState } from "react";
 import { getUserById } from "../../../modules/weatherManager";
+import { renderDailyWeather } from "../../../weatherExample/RenderWeather";
+import { DailyWeatherReport } from "../../../weatherExample/WeatherCardHTML";
+import { getGeocode, getWeatherReport } from "../../../weatherExample/WeatherDataManager";
 
 
 export const DashWeather = () => {
@@ -13,22 +16,60 @@ export const DashWeather = () => {
         state:"",
         city:""
     })
+    const [ weather, setWeather] = useState( {
+        weather:"",
+        iconUrl:"",
+        tempHi:"",
+        tempLow:"",
+        date:""
+    })
 
     //This gets the sessionStorage User Id, needed to make the fetchcall
     const theUsersId = sessionStorage.getItem("nutshell_user")
-    const fillInLocationInfo =() => {
+    // const fillInLocationInfo =() => {
+    //     getUserById(theUsersId).then(userObject => {
+    //         const locationObject={
+    //             state: userObject.state,
+    //             city:userObject.city
+    //         }
+    //         setLocation(locationObject)
+    //     })
+    // }
+
+  
+
+    useEffect(() => {
         getUserById(theUsersId).then(userObject => {
             const locationObject={
                 state: userObject.state,
                 city:userObject.city
             }
             setLocation(locationObject)
+            return locationObject
         })
-    }
+        .then((location) =>{
+            console.log(location)
+           getGeocode(location.city, location.state)
+           .then((parsedResponse) => {
+                return getWeatherReport(parsedResponse.lat, parsedResponse.lon) 
+                  
+            })
+            .then((parsedResponse) => {
+                let weatherObject = {
+                  weather: parsedResponse.daily[0].weather[0].main,
+                  iconUrl: `http://openweathermap.org/img/wn/${parsedResponse.daily[0].weather[0].icon}@2x.png`,
+                  tempHi: `${parseInt(parsedResponse.daily[0].temp.max)}°F`,
+                  tempLow: `${parseInt(parsedResponse.daily[0].temp.min)}°F`,
+                  date: `${parsedResponse.daily[0].dt}`,
+                }
+                setWeather(weatherObject)
+            })
 
-    useEffect(() => {
-        fillInLocationInfo();
+        })
+        console.log(weather)
+        
     }, []);
+
 
 
     const AskForLocation = () => {
@@ -49,12 +90,14 @@ export const DashWeather = () => {
     }
 
 
+
     return(
         <>
             <div>
                 
                 < SeeYourWeather />
                 < AskForLocation/>
+                <DailyWeatherReport weatherObject={weather}/>
             
         
             </div>
