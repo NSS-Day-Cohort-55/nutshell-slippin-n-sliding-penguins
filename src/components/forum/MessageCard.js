@@ -11,6 +11,7 @@ export const MessageCard = ({
   userId,
   getFriends,
   getMessages,
+  editMessage,
 }) => {
   // this is for managing state of the popup
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,7 @@ export const MessageCard = ({
               content={message.content}
               id={message.id}
               getMessages={getMessages}
+              editMessage={editMessage}
             />
           )}
         </div>
