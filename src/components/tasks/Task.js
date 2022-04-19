@@ -17,6 +17,7 @@ export const TaskCard = ({singleTask, handleUpdateTask, getTasks}) => {
             <div className="card">
                 <div className="card-content">    
                     <h2>{singleTask.taskDescription}</h2><br/>
+                    
                     <p>Completion expected by: {singleTask.dateDue}</p>
                     <p>Is this complete? {singleTask.isComplete ? "Yes": "No"}</p>
                                       

@@ -56,7 +56,7 @@ export const TaskEditForm = () => {
         <>
           <form>
             <fieldset>
-              <div className="formgrid">
+              <div className="edit-form">
               <label htmlFor="taskDescription">Changed your mind?</label>
                 <input
                   type="text"

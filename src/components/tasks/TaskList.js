@@ -2,7 +2,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllTasks, deleteTask, updateTask } from "../../modules/TaskDataManager.js"
+import { getAllTasks, updateTask } from "../../modules/TaskDataManager.js"
 import { TaskCard } from "./Task.js"
 import "./TaskList.css"
 
@@ -46,10 +46,8 @@ export const TaskList =() => {
                     return (
               <TaskCard
                     key={task.id}
-                    // tasks={tasks}
                     singleTask={task}
                     getTasks={getTasks}
-                    // handleDeleteTask={handleDeleteTask}
                     handleUpdateTask={handleUpdateTask} />  
                     )}}  
                     
