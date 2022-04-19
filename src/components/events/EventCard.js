@@ -9,7 +9,7 @@ export const EventCard = ({event, handleEdit, handleDeleteEvent}) => {
     console.log(event);
     return (
         <>
-<div className="card" id={`event_${event.id}`}>
+<div className="event-card" id={`event_${event.id}`}>
     <div className="card-content">
     <h5> Event Name:</h5>
     <h6> Info: <span className="card-eventdescription">

@@ -55,7 +55,7 @@ export const ArticleList = () => {
         ))}
       </div>
       <div>
-        <Link to={`/createArticle`}>
+        <Link className="btn" to={`/createArticle`}>
           <button>New</button>
         </Link>
       </div>
