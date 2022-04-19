@@ -4,7 +4,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 import { updateTask, getSpecificTask } from "../../modules/TaskDataManager"
-import "./TaskEditForm.css"
+import "./TaskForm.css"
 
 
 export const TaskEditForm = () => {
