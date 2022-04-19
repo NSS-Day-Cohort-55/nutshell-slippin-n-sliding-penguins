@@ -20,13 +20,14 @@ const handleFetch = () => {
    .then((data) => 
    setLocationInfo({
      name: location.name,
+     state: location.region,
      country: location.country,
      farenheit: {
-     current: data.current.temp_f,
-     high: data.forecast.forcastday[0].day.maxtemp_f,
-     low: data.forecast.forecastday[0].daymintemp_f,
+     current: current.temp_f,
+    //  high: forecast.forcastday[0].day.maxtemp_f,
+    //  low: forecast.forecastday[0].daymintemp_f,
      },
-     condition: data.current.condition.text
+     condition: current.condition.text
      }));
 
 setLocation("");
