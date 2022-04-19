@@ -39,8 +39,9 @@ export const EventList = ({handleEdit}) => {
         </button>
     </section>
         <div className="container-cards">
-       {events.map(event=> 
+       {events.map((event, index) => 
        <EventCard 
+       index = {index}
        key={event.id} 
        event={event}
        handleEdit={handleEdit}
