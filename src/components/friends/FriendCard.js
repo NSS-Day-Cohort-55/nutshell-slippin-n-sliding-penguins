@@ -1,4 +1,4 @@
-export const FriendCard = ({ friend, deleteFriends }) => {
+export const FriendCard = ({ friend, deleteFriends, isDashboard }) => {
   return (
     <div className="friend-wrap" id={`userFriendId__${friend.userId}`}>
       <div className="friend-details">
@@ -7,9 +7,13 @@ export const FriendCard = ({ friend, deleteFriends }) => {
           <span className="friend-email">{friend.user?.email}</span>
         </h5>
         <div className="delete-friends">
-          <button type="button" onClick={() => deleteFriends(friend.id)}>
-            X
-          </button>
+          {isDashboard ? (
+            ""
+          ) : (
+            <button type="button" onClick={() => deleteFriends(friend.id)}>
+              X
+            </button>
+          )}
         </div>
       </div>
     </div>

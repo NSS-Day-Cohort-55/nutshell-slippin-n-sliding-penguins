@@ -1,7 +1,10 @@
-/* Everyone, feel free to try out different CSS styles
-This page was started by Rushay and contributed to by.... */
-
-.articleCard{
+.userArticleCard{
     border: solid 2px black;
-    background-color: azure;
+    background-color: grey;
+}
+
+.articleCard {
+    font-style: italic;
+    border: solid 2px black;
+    background-color: cornsilk;
 }

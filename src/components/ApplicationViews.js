@@ -9,9 +9,9 @@ import { Dashboard } from "./dashboard/Dashboard";
 import { MessageList } from "./forum/MessageList";
 import { TaskList } from "./tasks/TaskList";
 import { TaskForm } from "./tasks/TaskForm";
-import { TaskEditForm } from "./tasks/TaskEditForm"
-import { CreateArticleForm} from "./dashboard/articles/CreateArticleForm";
-import { EditArticleForm} from "./dashboard/articles/EditArticleForm"
+import { TaskEditForm } from "./tasks/TaskEditForm";
+import { CreateArticleForm } from "./dashboard/articles/CreateArticleForm";
+import { EditArticleForm } from "./dashboard/articles/EditArticleForm";
 import { FriendsList } from "./friends/FriendsList";
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
@@ -27,20 +27,21 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route path="friends" element={<FriendsList />} />
           <Route path="messages" element={<MessageList />} />
 
-          <Route path="events" element={<EventList />} />      
-          <Route path="/events/create" element={<EventForm/>} /> 
-          <Route path="/events/:eventId/edit" element={<EventEditForm/>} /> 
+          <Route path="events" element={<EventList />} />
+          <Route path="/events/create" element={<EventForm />} />
+          <Route path="/events/:eventId/edit" element={<EventEditForm />} />
           <Route exact path="tasks" element={<TaskList />} />
           <Route path="tasks/add" element={<TaskForm />} />
-          <Route path="tasks/:taskId/edit" element={<TaskEditForm/>}/>
-          <Route path="events" element={""} /></Route>
+          <Route path="tasks/:taskId/edit" element={<TaskEditForm />} />
           <Route path="events" element={""} />
-          <Route path="createArticle" element={<CreateArticleForm/>}/>
-          <Route path="/editArticle/:articleId" element={<EditArticleForm/>}/>        
-          <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
-          <Route path="/register" element={<Register />} />     
-          <Route path="createArticle" element={<CreateArticleForm />} />
-          <Route path="/editArticle/:articleId" element={<EditArticleForm />} />        
+        </Route>
+        <Route path="events" element={""} />
+        <Route path="createArticle" element={<CreateArticleForm />} />
+        <Route path="/editArticle/:articleId" element={<EditArticleForm />} />
+        <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="createArticle" element={<CreateArticleForm />} />
+        <Route path="/editArticle/:articleId" element={<EditArticleForm />} />
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
         <Route path="/register" element={<Register />} />
       </Routes>
