@@ -35,7 +35,7 @@ export const ArticleList = () => {
     getAllFriends(theUser).then((friendsAPI) => {
       setFriends(friendsAPI);
     });
-  }, []);
+  }, [articles]);
 
   useEffect(() => {
     getArticles();

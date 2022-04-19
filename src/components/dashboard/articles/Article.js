@@ -41,12 +41,6 @@ export const Article = ({ object, getArticles, userId }) => {
           {/* This need to open a new tab or I will go nuts */}
           <a href={object.url}>See the full article here</a>
           <p>{theDate}</p>
-          <div>
-            <button onClick={handleDelete}>Delete</button>
-            <Link to={`/editArticle/${object.id}`}>
-              <button>Edit</button>
-            </Link>
-          </div>
         </div>
       </>
     );
