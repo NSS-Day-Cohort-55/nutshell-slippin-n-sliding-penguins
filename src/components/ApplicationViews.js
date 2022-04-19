@@ -14,6 +14,7 @@ import { CreateArticleForm } from "./dashboard/articles/CreateArticleForm";
 import { EditArticleForm } from "./dashboard/articles/EditArticleForm";
 import { FriendsList } from "./friends/FriendsList";
 
+
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
@@ -26,6 +27,13 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route exact path="/" element={<Dashboard />} />
           <Route path="friends" element={<FriendsList />} />
           <Route path="messages" element={<MessageList />} />
+      
+
+          <Route path="events" element={<EventList />} />      
+          <Route path="/events/create" element={<EventForm/>} /> 
+          <Route path="/events/:eventId/edit" element={<EventEditForm/>} /> 
+         
+
 
           <Route path="events" element={<EventList />} />
           <Route path="/events/create" element={<EventForm />} />
