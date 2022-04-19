@@ -11,9 +11,19 @@ export const MessageList = () => {
   const userId = parseInt(sessionStorage.getItem("nutshell_user"));
   const [friends, setFriends] = useState([]);
 
+  const FilterMessages = (arrayOfMessages) => {
+    setMessages(
+      arrayOfMessages.filter(
+        (message) =>
+          message.recepientId === userId ||
+          message.recepientId === 0 ||
+          message.userId === userId
+      )
+    );
+  };
   const getMessages = () => {
     return fetch.getAllMessages().then((messages) => {
-      setMessages(messages);
+      FilterMessages(messages);
     });
   };
 
@@ -24,30 +34,21 @@ export const MessageList = () => {
   };
 
   const deleteMessage = (id) => {
-    fetch
-      .deleteMessage(id)
-      .then(() => fetch.getAllMessages().then(setMessages));
+    fetch.deleteMessage(id).then(() => getMessages());
   };
 
   const editMessages = (id) => {
-    fetch.editMessage(id).then(() => fetch.getAllMessages().then(setMessages));
+    fetch.editMessage(id).then(() => getMessages());
   };
 
   useEffect(() => {
     getMessages();
-  }, [messages]);
+  }, []);
 
   // sorts msgs by timestamp and filters out private messages not directed at the user
   messages.sort(function (x, y) {
     return x.timestamp - y.timestamp;
   });
-
-  let filteredMessages = messages.filter(
-    (message) =>
-      message.recepientId === userId ||
-      message.recepientId === 0 ||
-      message.userId === userId
-  );
 
   // scroll to bottom of a div
   const messageEndRef = useRef(null);
@@ -64,7 +65,7 @@ export const MessageList = () => {
     <>
       <h3>Message Board</h3>
       <div className="message-container">
-        {filteredMessages.map((message) => (
+        {messages.map((message) => (
           <MessageCard
             userId={userId}
             message={message}
