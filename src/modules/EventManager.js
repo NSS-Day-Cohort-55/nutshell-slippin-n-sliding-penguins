@@ -6,7 +6,7 @@ export const getEventById = (eventId) => {
     .then(res => res.json())
 }
 export const getAllEvents = () => {
-    return fetch(`${remoteURL}/events`)
+    return fetch(`${remoteURL}/events?_sort=eventDate`)
     .then(res => res.json())
 }
 // export const getUserEvents = (userId) => {

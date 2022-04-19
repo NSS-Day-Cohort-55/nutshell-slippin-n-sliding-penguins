@@ -27,6 +27,7 @@ export const DailyWeatherReport = ({weatherObj}) => {
       <div className="weather_card">
         <h5 id='date'>{formatDate(weatherObj?.date)}</h5>
         <p id='weather'>{weatherObj?.weather}</p>
+        <img src ={weatherObj.iconUrl} alt="weather icon"></img>
         <p id='tempHi'>{weatherObj?.tempHi}</p>
         <p  id='tempLow'>{weatherObj?.tempLow}</p>
       </div>
