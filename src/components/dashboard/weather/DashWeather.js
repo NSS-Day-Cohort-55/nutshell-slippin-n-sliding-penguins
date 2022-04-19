@@ -52,9 +52,9 @@ export const DashWeather = () => {
     return(
         <>
             <div>
-                {?(location.city && location.state)(
-                    < SeeYourWeather />
-                ):{< AskForLocation/>}}
+                
+                < SeeYourWeather />
+                < AskForLocation/>
             
         
             </div>
