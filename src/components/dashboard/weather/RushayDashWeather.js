@@ -42,10 +42,8 @@ export const RushayDashWeather = () => {
             return locationObject
         })
         .then((loc) =>{
-            console.log(loc)
            getGeocode(loc.city, loc.state)
            .then((parsedResponse) => {
-               console.log(parsedResponse)
                 return getWeatherReport(parsedResponse.lat, parsedResponse.lon)
             })
             .then((parsedResponse) => {
@@ -60,7 +58,6 @@ export const RushayDashWeather = () => {
             })
 
         })
-        console.log(weather)
         
     }, []);
 
