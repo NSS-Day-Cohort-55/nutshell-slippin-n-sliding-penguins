@@ -1,7 +1,8 @@
-//Author: Joe Maifeld. Component actions:
+//Author: Joe Maifeld. Component actions:this creates the card that displays the individual tasks
 
 import { Link } from "react-router-dom"
 import { deleteTask } from "../../modules/TaskDataManager";
+import "./Task.css"
 
 export const TaskCard = ({singleTask, handleUpdateTask, getTasks}) => {
 

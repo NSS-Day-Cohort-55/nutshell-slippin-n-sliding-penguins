@@ -1,4 +1,4 @@
-//Author: Joe Maifeld. Component actions:
+//Author: Joe Maifeld. Component actions:Creates a form to make a new task
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

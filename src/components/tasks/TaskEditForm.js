@@ -1,4 +1,4 @@
-//Author: Joe Maifeld. Component actions:
+//Author: Joe Maifeld. Component actions:creates a form that allows you to edit a form
 
 
 import { useNavigate, useParams } from "react-router-dom";

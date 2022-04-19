@@ -1,9 +1,10 @@
-//Author: Joe Maifeld. Component actions:
+//Author: Joe Maifeld. Component actions:compliles all of the tasks generated into a list
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllTasks, deleteTask, updateTask } from "../../modules/TaskDataManager.js"
 import { TaskCard } from "./Task.js"
+import "./TaskList.css"
 
 
 export const TaskList =() => {
