@@ -10,13 +10,14 @@ Rushay */
 .dash_main{
     display:flex;
     gap:2rem;
+    background-color: #B4C5E4;
 }
 
 .dash_events{
- background-color: bisque;
+ background-color: #3C91E6;
  height:500px;
  width:20%;
- 
+
 }
 .dash_news{
     background-color: bisque;

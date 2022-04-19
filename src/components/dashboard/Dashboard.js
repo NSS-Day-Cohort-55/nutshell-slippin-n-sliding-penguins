@@ -1,10 +1,11 @@
 //THis will structure the dashboard and serve as a staging area
 
-import "./Dashboard.css"
-import { ArticleList } from "./articles/ArticleList"
+import "./Dashboard.css";
+import { FriendsListDashboard } from "../friends/FriendsListDashboard";
+import { ArticleList } from "./articles/ArticleList";
 import { EventList } from "../events/EventList.js";
-import { FriendsList } from "../friends/FriendsList";
-import { WeatherApp } from "../weather/Weather";
+// import { FriendsList } from "../friends/FriendsList";
+
 
 export const Dashboard = () => {
 
@@ -12,17 +13,27 @@ export const Dashboard = () => {
     return (
         <>
             <div className="dash_weather">
-                <h2><WeatherApp/></h2>
+                <h2> Weather Data Here </h2>
             </div>
             <div className="dash_main">
-                <div className="dash_events">< EventList/> </div>
-                <div className="dash_news">< ArticleList/></div>
-                <div className="dash_friends"> <FriendsList/></div>                         
+             <div className="dash_events">
+                <EventList />{" "}
+                </div>
+            <div className="dash_news">
+                <ArticleList />
             </div>
-        </>
+            <div className="dash_friends">
+            {" "}
+            <FriendsListDashboard />
+        </div>
+      </div>
+    </>
+        
     )
 
 }
+
+
 
 
 

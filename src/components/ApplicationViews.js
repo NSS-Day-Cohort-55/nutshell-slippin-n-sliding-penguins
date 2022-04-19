@@ -13,7 +13,7 @@ import { TaskEditForm } from "./tasks/TaskEditForm";
 import { CreateArticleForm } from "./dashboard/articles/CreateArticleForm";
 import { EditArticleForm } from "./dashboard/articles/EditArticleForm";
 import { FriendsList } from "./friends/FriendsList";
-import { WeatherApp } from "./weather/Weather.js";
+
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
   const PrivateOutlet = () => {
@@ -32,7 +32,7 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
           <Route path="events" element={<EventList />} />      
           <Route path="/events/create" element={<EventForm/>} /> 
           <Route path="/events/:eventId/edit" element={<EventEditForm/>} /> 
-          <Route path="weather" element={<WeatherApp />} />  
+         
 
 
           <Route path="events" element={<EventList />} />
