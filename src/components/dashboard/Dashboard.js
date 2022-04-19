@@ -13,7 +13,7 @@ export const Dashboard = () => {
     return (
         <>
             <div className="dash_weather">
-                <h2> Weather Data Here </h2>
+                <h2>Today's Weather Here </h2>
             </div>
             <div className="dash_main">
              <div className="dash_events">
