@@ -31,13 +31,12 @@ export const EventForm =() => {
         newEvent.eventDate = e.target.value
         
     setEvent(newEvent)
-    console.log(event)
+    
 
 
     }
     const handleClickSaveEvent = (e) => {
         e.preventDefault() //prevents browser from submitting form until ready
-        console.log(event)
         addEvent(event)
         .then(() => navigate("/events"))
         
