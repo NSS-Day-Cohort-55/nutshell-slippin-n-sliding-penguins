@@ -1,6 +1,5 @@
 // popup for editing a message live on the message forum screen : Jae
 import React, { useState, useEffect } from "react";
-import { editMessage, getAllMessages } from "../../modules/forumDataManager.js";
 
 export const EditMessagePopup = (props) => {
   // for handling popup input
@@ -20,7 +19,7 @@ export const EditMessagePopup = (props) => {
   const handleSaveEdit = (e) => {
     e.preventDefault();
 
-    editMessage(editedMessage).then(() => props.getAllMessages);
+    props.editMessage(editedMessage);
     props.handleClose();
   };
 

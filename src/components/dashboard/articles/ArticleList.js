@@ -20,14 +20,14 @@ export const ArticleList = () => {
     friends.forEach((friend) => {
       friendIdArr.push(friend.userId);
     });
+    friendIdArr.push(theUser);
 
     getAllArticles().then((arrayOfArticles) => {
-      const filteredArticles = arrayOfArticles.filter((article) => {
-        console.log(friendIdArr);
-        return friendIdArr.includes(article.userId);
-      });
-      console.log(filteredArticles);
-      setArticles(filteredArticles);
+      setArticles(
+        arrayOfArticles.filter((article) => {
+          return friendIdArr.includes(article.userId);
+        })
+      );
     });
   };
 
@@ -39,7 +39,7 @@ export const ArticleList = () => {
 
   useEffect(() => {
     getArticles();
-  }, []);
+  }, [friends]);
 
   return (
     <>
