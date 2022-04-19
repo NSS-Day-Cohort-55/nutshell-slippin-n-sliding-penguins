@@ -39,7 +39,12 @@ export const CreateArticleForm = () => {
   };
 
   const saveToArticles = (event) => {
-    addArticle(article).then(() => navigate("/"));
+  
+    if (article.title === "" || article.synopsis === "" || article.url === "") {
+			window.alert("Please fill in title, synopsis, and url")
+		} else {
+      addArticle(article).then(() => navigate("/"));
+		}
   };
 
   return (

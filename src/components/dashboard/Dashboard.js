@@ -4,12 +4,14 @@ import "./Dashboard.css";
 import { ArticleList } from "./articles/ArticleList";
 import { EventList } from "../events/EventList.js";
 import { FriendsListDashboard } from "../friends/FriendsListDashboard";
+import {RushayDashWeather } from "./weather/RushayDashWeather"
 
 export const Dashboard = () => {
   return (
     <>
       <div className="dash_weather">
         <h2>Today's Weather Here</h2>
+        <RushayDashWeather/>
       </div>
       <div className="dash_main">
         <div className="dash_events">

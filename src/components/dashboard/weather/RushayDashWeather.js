@@ -2,6 +2,7 @@
 //It will check if the user has nay values in city and state
 //If yes, the call is made and the weather loads
 //If no the user inputs thier location
+//Rushay
 
 import React, { useEffect, useState } from "react";
 import { getUserById } from "../../../modules/weatherManager";
@@ -10,9 +11,9 @@ import { DailyWeatherReport } from "../../../weatherExample/WeatherCardHTML";
 import { getGeocode, getWeatherReport } from "../../../weatherExample/WeatherDataManager";
 
 
-export const DashWeather = () => {
+export const RushayDashWeather = () => {
 
-    const [location, setLocation] = useState({
+    const[location, setLocation]= useState({
         state:"",
         city:""
     })
@@ -26,19 +27,12 @@ export const DashWeather = () => {
 
     //This gets the sessionStorage User Id, needed to make the fetchcall
     const theUsersId = sessionStorage.getItem("nutshell_user")
-    // const fillInLocationInfo =() => {
-    //     getUserById(theUsersId).then(userObject => {
-    //         const locationObject={
-    //             state: userObject.state,
-    //             city:userObject.city
-    //         }
-    //         setLocation(locationObject)
-    //     })
-    // }
+
 
   
 
     useEffect(() => {
+        
         getUserById(theUsersId).then(userObject => {
             const locationObject={
                 state: userObject.state,
@@ -47,12 +41,12 @@ export const DashWeather = () => {
             setLocation(locationObject)
             return locationObject
         })
-        .then((location) =>{
-            console.log(location)
-           getGeocode(location.city, location.state)
+        .then((loc) =>{
+            console.log(loc)
+           getGeocode(loc.city, loc.state)
            .then((parsedResponse) => {
-                return getWeatherReport(parsedResponse.lat, parsedResponse.lon) 
-                  
+               console.log(parsedResponse)
+                return getWeatherReport(parsedResponse.lat, parsedResponse.lon)
             })
             .then((parsedResponse) => {
                 let weatherObject = {
@@ -72,6 +66,7 @@ export const DashWeather = () => {
 
 
 
+
     const AskForLocation = () => {
         return(
             <>
@@ -81,26 +76,20 @@ export const DashWeather = () => {
         )
     }
 
-    const SeeYourWeather =()=> {
+  
+
+    if(location.state===""){
         return(
             <>
-                <h2>Today's weather is bright and sunny!</h2>
+                {AskForLocation()}
+            </>
+        )
+    } else {
+        return(
+            <>
+                <DailyWeatherReport weatherObj={weather}/>
             </>
         )
     }
 
-
-
-    return(
-        <>
-            <div>
-                
-                < SeeYourWeather />
-                < AskForLocation/>
-                <DailyWeatherReport weatherObject={weather}/>
-            
-        
-            </div>
-        </>
-    )
 }
