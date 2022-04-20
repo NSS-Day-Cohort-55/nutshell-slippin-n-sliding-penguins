@@ -102,8 +102,8 @@ export const CreateArticleForm = () => {
                 />
               </div>
             </fieldset>
-            <button>Close</button>
-            <button onClick={saveToArticles}>Save</button>
+            <button class="btn">Close</button>
+            <button class="btn" onClick={saveToArticles}>Save</button>
           </div>
         </div>
         <div className="dash_friends">friends go here</div>

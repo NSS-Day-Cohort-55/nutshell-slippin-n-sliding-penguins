@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { updateEvent, getEventById } from "../../modules/EventManager";
-import "./EventForm.css";
+import "./Event.css";
 import { formatDate } from "../../helpers/formatDate";
 
 export const EventEditForm = () => {

@@ -35,7 +35,7 @@ export const EventList = ({handleEdit}) => {
      <button type="button"
      className="btn"
      onClick={() => {navigate("/events/create")}}>
-    <h3> Add Event </h3>
+    <h3 class="event-header"> Add Event </h3>
         </button>
     </section>
         <div className="container-cards">

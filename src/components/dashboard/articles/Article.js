@@ -21,12 +21,12 @@ export const Article = ({ object, getArticles, userId }) => {
           <h4>{object.title}</h4>
           <p>{object.synopsis}</p>
           {/* This need to open a new tab or I will go nuts */}
-          <a href={object.url}>See the full article here</a>
+          <a href={object.url}><button class="btn">Read all about it!</button></a>
           <p>{theDate}</p>
           <div>
-            <button onClick={handleDelete}>Delete</button>
+            <button class="btn" onClick={handleDelete}>Delete</button>
             <Link to={`/editArticle/${object.id}`}>
-              <button>Edit</button>
+              <button class="btn">Edit</button>
             </Link>
           </div>
         </div>
@@ -39,7 +39,7 @@ export const Article = ({ object, getArticles, userId }) => {
           <h4>{object.title}</h4>
           <p>{object.synopsis}</p>
           {/* This need to open a new tab or I will go nuts */}
-          <a href={object.url}>See the full article here</a>
+          <a href={object.url}><button class="btn">Read all about it!</button></a>
           <p>{theDate}</p>
         </div>
       </>

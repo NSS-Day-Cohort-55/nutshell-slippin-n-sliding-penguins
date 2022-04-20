@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { addMessage } from "../../modules/forumDataManager";
 import { getAllUsers } from "../../modules/forumDataManager";
 import { getAllFriends } from "../../modules/friendsManager";
+import "./MessageList.css";
 
 export const MessageInput = ({ userId, getMessages }) => {
   const [message, setMessage] = useState({
@@ -98,7 +99,7 @@ export const MessageInput = ({ userId, getMessages }) => {
           />
         </div>
       </fieldset>
-      <button type="button" className="btn-send" onClick={handleSendMessage}>
+      <button type="button" className="btn" onClick={handleSendMessage}>
         Send Message
       </button>
     </div>

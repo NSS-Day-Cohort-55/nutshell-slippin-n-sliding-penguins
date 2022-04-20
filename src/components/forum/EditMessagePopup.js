@@ -1,5 +1,6 @@
 // popup for editing a message live on the message forum screen : Jae
 import React, { useState, useEffect } from "react";
+import "./MessageList.css";
 
 export const EditMessagePopup = (props) => {
   // for handling popup input
@@ -41,7 +42,7 @@ export const EditMessagePopup = (props) => {
             value={editedMessage.content}
           />
         </div>
-        <button type="button" onClick={handleSaveEdit}>
+        <button class="btn" type="button" onClick={handleSaveEdit}>
           Save
         </button>
       </div>

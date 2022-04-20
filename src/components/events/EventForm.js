@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addEvent } from "../../modules/EventManager";
-import "./EventForm.css";
+import "./Event.css";
 import { EventWeather } from "../dashboard/weather/EventWeather.js";
 
 export const EventForm = () => {

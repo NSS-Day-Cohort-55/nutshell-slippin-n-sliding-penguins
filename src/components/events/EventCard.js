@@ -10,7 +10,7 @@ export const EventCard = ({ index, event, handleEdit, handleDeleteEvent}) => {
         return (
             <>
     <div className="first-card" id={`event_${event.id}`}>
-        <div className="card-content">
+        <div >
         <h6> Event Name: <span className="card-eventdescription">
             {event.description}
           </span></h6>
@@ -21,10 +21,10 @@ export const EventCard = ({ index, event, handleEdit, handleDeleteEvent}) => {
           </div>
           <section className ="card--modifiers">
           <Link to={`/events/${event.id}/edit`}>
-              <button id="edit" type="button" >Edit</button>
+              <button class="btn" id="edit" type="button" >Edit</button>
           </Link>
         
-          <button id="delete" type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
+          <button class="btn" id="delete" type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
           </section>
           </div>
           
@@ -34,8 +34,8 @@ export const EventCard = ({ index, event, handleEdit, handleDeleteEvent}) => {
     } else {
     return (
         <>
-<div className="card" id={`event_${event.id}`}>
-    <div className="card-content">
+<div className="card-content" id={`event_${event.id}`}>
+    <div >
     <h6> Event Name: <span className="card-eventdescription">
         {event.description}
       </span></h6>
@@ -46,10 +46,10 @@ export const EventCard = ({ index, event, handleEdit, handleDeleteEvent}) => {
       </div>
       <section className ="card--modifiers">
       <Link to={`/events/${event.id}/edit`}>
-          <button id="edit" type="button" >Edit</button>
+          <button class="btn" id="edit" type="button" >Edit</button>
       </Link>
     
-      <button id="delete" type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
+      <button class="btn" id="delete" type="button" onClick={() => handleDeleteEvent(event.id)}>Delete Event</button>
       </section>
       </div>
       
