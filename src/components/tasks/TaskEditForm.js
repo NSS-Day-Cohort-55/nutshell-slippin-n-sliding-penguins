@@ -1,10 +1,10 @@
-//Author: Joe Maifeld. Component actions:
+//Author: Joe Maifeld. Component actions:creates a form that allows you to edit a form
 
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 import { updateTask, getSpecificTask } from "../../modules/TaskDataManager"
-import "./TaskEditForm.css"
+import "./Task.css"
 
 
 export const TaskEditForm = () => {
@@ -56,7 +56,7 @@ export const TaskEditForm = () => {
         <>
           <form>
             <fieldset>
-              <div className="formgrid">
+              <div className="edit-form">
               <label htmlFor="taskDescription">Changed your mind?</label>
                 <input
                   type="text"

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { formatMDY } from "../../helpers/formatDate";
 import { AddFriendsPopup } from "../friends/AddFriendsPopup";
 import { EditMessagePopup } from "./EditMessagePopup.js";
+import "./MessageList.css";
 
 export const MessageCard = ({
   message,
@@ -42,10 +43,10 @@ export const MessageCard = ({
           id={`recepientId__${message.recepientId}`}
         >
           <p>{message.content}</p>
-          <button type="button" onClick={() => deleteMessage(message.id)}>
+          <button class="btn" type="button" onClick={() => deleteMessage(message.id)}>
             X
           </button>
-          <button type="button" onClick={toggleMessagePopup}>
+          <button class="btn" type="button" onClick={toggleMessagePopup}>
             Edit
           </button>
           {messageIsOpen && (

@@ -33,8 +33,8 @@ export const FriendsList = () => {
 
   return (
     <>
-      <h3>Friends List</h3>
-      <input type="button" value="Add A Friend!" onClick={togglePopup} />
+      <h3 class="friends-header">Friends List</h3>
+      <input  class="btn" type="button" className="btn" value="Add A Friend!"  onClick={togglePopup} />
       {isOpen && (
         <AddFriendsPopup handleClose={togglePopup} getFriends={getFriends} />
       )}

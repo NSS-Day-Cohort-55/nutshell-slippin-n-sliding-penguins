@@ -43,7 +43,13 @@ export const ArticleList = () => {
 
   return (
     <>
-      <h2>My Articles</h2>
+      <h2 class="articles-header">My Articles
+      <div>
+        <Link to={`/createArticle`}>
+          <button class="btn" >New</button>
+        </Link>
+      </div>
+      </h2>
       <div className="articleCardsHolder">
         {articles.map((singleArticle) => (
           <Article
@@ -54,11 +60,7 @@ export const ArticleList = () => {
           />
         ))}
       </div>
-      <div>
-        <Link to={`/createArticle`}>
-          <button>New</button>
-        </Link>
-      </div>
+      
     </>
   );
 };

@@ -104,7 +104,7 @@ export const AddFriendsPopup = (props) => {
             value={addFriend.user.name}
           />
         </div>
-        <button type="button" onClick={handleAddFriend}>
+        <button class="btn" type= "button" onClick={handleAddFriend}>
           Add Friend
         </button>
       </div>

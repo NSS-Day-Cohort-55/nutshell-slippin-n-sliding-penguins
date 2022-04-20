@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate, useParams, Link} from "react-router-dom";
 import { updateEvent, getEventById } from "../../modules/EventManager";
-import "./EventForm.css";
+import "./Event.css";
 import { formatDate } from "../../helpers/formatDate";
 
 export const EventEditForm = () => {
@@ -108,7 +108,7 @@ export const EventEditForm = () => {
                     </fieldset>
                 <section className="form--submit">
                   <Link to ="/events">
-                    <button id="return"> Return to Events </button>
+                    <button class="btn" id="return"> Return to Events </button>
                   </Link>
                 <div className="alignRight">
                     <button

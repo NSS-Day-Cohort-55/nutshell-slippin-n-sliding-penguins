@@ -10,7 +10,7 @@ export const FriendCard = ({ friend, deleteFriends, isDashboard }) => {
           {isDashboard ? (
             ""
           ) : (
-            <button type="button" onClick={() => deleteFriends(friend.id)}>
+            <button class="btn" type="button" onClick={() => deleteFriends(friend.id)}>
               X
             </button>
           )}

@@ -1,1 +1,79 @@
-/* //Author: Joe Maifeld. Component actions: */
+/* //Author: Joe Maifeld. Component actions:styling for the task cards */
+
+.card btn {
+    background-color: #B4C5E4;
+}
+
+.card-content {
+    text-align: left;
+    justify-content: space-evenly;
+    flex-basis: 85%;
+    margin: 1em;
+    padding: 1em;
+    border: .1rem solid #09154048;
+    background: rgb(38, 196, 133);
+    background: linear-gradient(90deg, rgba(38, 196, 133, 1) 82%, rgba(180, 197, 228, 1) 100%);
+    border-radius: .6rem;
+    box-shadow: .4rem .4rem .5rem rgba(0, 0, 0, 0.3);
+    /* max-width: 20em; */
+}
+
+
+.task-cards {
+    background-color: #B4C5E4;
+
+
+}
+
+.container-cards {
+    background-color: #B4C5E4;
+}
+
+.btn {
+    background: #3C91E6;
+    background-image: -webkit-linear-gradient(top, #3C91E6, #2980b9);
+    background-image: -moz-linear-gradient(top, #3C91E6, #2980b9);
+    background-image: -ms-linear-gradient(top, #3C91E6, #2980b9);
+    background-image: -o-linear-gradient(top, #3C91E6, #2980b9);
+    background-image: linear-gradient(to bottom, #3C91E6, #2980b9);
+    border-radius: 45px;
+    box-shadow: 0px 1px 10px #3C91E6;
+    font-family: Georgia;
+    color: #26C485;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    max-width: 8em;
+    max-height: 4em;
+
+
+}
+
+.btn:hover {
+    background: #B4C5E4;
+    background-image: -webkit-linear-gradient(top, #B4C5E4, #3498db);
+    background-image: -moz-linear-gradient(top, #B4C5E4, #3498db);
+    background-image: -ms-linear-gradient(top, #B4C5E4, #3498db);
+    background-image: -o-linear-gradient(top, #B4C5E4, #3498db);
+    background-image: linear-gradient(to bottom, #B4C5E4, #3498db);
+    text-decoration: none;
+}
+
+.edit-form {
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: rgb(38, 196, 133);
+    background: linear-gradient(90deg, rgba(38, 196, 133, 1) 82%, rgba(180, 197, 228, 1) 100%);
+
+}
+
+.task-form {
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: rgb(38, 196, 133);
+    background: linear-gradient(90deg, rgba(38, 196, 133, 1) 82%, rgba(180, 197, 228, 1) 100%);
+}
