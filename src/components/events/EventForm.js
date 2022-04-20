@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addEvent } from '../../modules/EventManager';
-import './EventForm.css'
+import './Event.css'
 
 export const EventForm =() => {
     const [event, setEvent] = useState({
@@ -43,7 +43,7 @@ export const EventForm =() => {
     }
 
     return (
-    <form className="eventForm">
+    <form className="event-form">
 			<h3 className="eventForm__title">Create New Event</h3>
 			<fieldset>
 				<div className="form-group">

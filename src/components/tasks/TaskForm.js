@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addTask } from '../../modules/TaskDataManager';
+import "./Task.css"
 
 export const TaskForm = () => {
   const navigate = useNavigate()
@@ -40,7 +41,7 @@ export const TaskForm = () => {
 	}
 
   return (
-    <form className="taskForm">
+    <form className="task-form">
       <h2 className="taskForm__title">New Task</h2>
       <fieldset>
         <div className="form-group">

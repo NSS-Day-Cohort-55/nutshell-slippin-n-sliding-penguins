@@ -24,12 +24,12 @@ export const TaskCard = ({singleTask, handleUpdateTask, getTasks}) => {
                     <label><input type="checkbox" onClick={() => handleUpdateTask(singleTask.id)}>
                         </input>Completed Task!</label><br/>
 
-                        <Link to={`/tasks/${singleTask.id}/edit`}>
-                        <button >Edit</button>
+                        <Link  to={`/tasks/${singleTask.id}/edit`} >
+                        <button class="btn">Edit</button>
                         </Link>
 
-                        <Link to={`/tasks`}>
-                        <button onClick={handleDeleteTask}>Delete</button>
+                        <Link to={`/tasks`} >
+                        <button class="btn" onClick={handleDeleteTask}>Delete</button>
                         </Link>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllTasks, updateTask } from "../../modules/TaskDataManager.js"
 import { TaskCard } from "./Task.js"
-import "./TaskList.css"
+import "./Task.css"
 
 
 export const TaskList =() => {
