@@ -1,4 +1,4 @@
-# Holiday Road Grand Canyon!
+# Nutshell Slippin & Slidin Penguins!
 
 - The goal of this project was to build our first react application that allows a user to add friends, message in a public chat room, create tasks, events, and articles. We use JSON to store information on the users as well as what they create, we were limited to creating content to fulfil certain issue tickets under a time-constraint so we could not finish the styling for the website, but all requested functionality is implemented.
 - ### Tech Stack
