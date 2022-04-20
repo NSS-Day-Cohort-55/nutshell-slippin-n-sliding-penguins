@@ -1,4 +1,4 @@
-import { formatMDY } from "../helpers/formatDate.js";
+import { formatMDY } from "../../../helpers/formatDate.js";
 export const EventWeatherCard = ({ weatherObj }) => {
   return (
     <div>
