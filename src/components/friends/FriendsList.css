@@ -45,3 +45,7 @@
     background-image: linear-gradient(to bottom, #B4C5E4, #3498db);
     text-decoration: none;
 }
+
+.friends-header {
+    background: #B4C5E4;
+}
