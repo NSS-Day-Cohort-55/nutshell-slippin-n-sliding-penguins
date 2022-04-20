@@ -6,7 +6,6 @@ import { getUserById } from "../../../modules/weatherManager.js";
 
 // get geocode using openweather api then pass that to get weather report to generate weather report data then take that data and turn it into an array of objs to be rendered on the dom
 export const EventWeather = ({ differenceInDays }) => {
-  console.log(differenceInDays);
   const [weatherArr, setWeatherArr] = useState([]);
   const [location, setLocation] = useState({
     state: "",

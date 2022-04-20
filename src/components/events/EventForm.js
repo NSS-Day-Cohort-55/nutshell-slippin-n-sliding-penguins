@@ -41,7 +41,6 @@ export const EventForm = () => {
     var date1 = new Date();
     var date2 = new Date(event.eventDate);
 
-    console.log(date1);
     // To calculate the time difference of two dates
     var Difference_In_Time = date2.getTime() - date1.getTime();
 
