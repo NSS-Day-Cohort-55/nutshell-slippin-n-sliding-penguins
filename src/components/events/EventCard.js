@@ -10,7 +10,7 @@ export const EventCard = ({ index, event, handleEdit, handleDeleteEvent }) => {
     return (
       <>
         <div className="first-card" id={`event_${event.id}`}>
-          <div className="first-card-font">
+          <div className="first-card-font" id="first-event-font">
             <h6>
               {" "}
               Event Name:{" "}
