@@ -107,7 +107,7 @@ export const EventForm = () => {
           Save Event
         </button>
       </form>
-      <EventWeather differenceInDays={calculateDiffInDays()} />
+      <EventWeather differenceInDays={calculateDiffInDays() + 1} />
     </>
   );
 };
