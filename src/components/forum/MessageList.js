@@ -63,7 +63,7 @@ export const MessageList = () => {
 
   return (
     <>
-      <h3>Message Board</h3>
+      <h3 class="forum-header">Message Board</h3>
       <div className="message-container">
         {messages.map((message) => (
           <MessageCard

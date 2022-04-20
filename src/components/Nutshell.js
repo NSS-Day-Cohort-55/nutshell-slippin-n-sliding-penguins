@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
 import "./Nutshell.css";
+import { Footer } from "./nav/Footer"
 
 export const Nutshell = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -26,6 +27,7 @@ export const Nutshell = () => {
         isAuthenticated={isAuthenticated}
         setIsAuthenticated={setIsAuthenticated}
       />
+      <Footer/>
     </>
   );
 };
