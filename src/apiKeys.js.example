@@ -1,0 +1,4 @@
+export const weatherKey = () => {
+  const apiString = "your-api-key";
+  return apiString;
+};
