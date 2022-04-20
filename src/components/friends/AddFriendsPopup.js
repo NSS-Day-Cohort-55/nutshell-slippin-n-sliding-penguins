@@ -1,3 +1,4 @@
+// module by jae, popup for adding friends
 import React, { useState, useEffect } from "react";
 import {
   getAllUsers,

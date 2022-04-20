@@ -1,3 +1,4 @@
+// module by jae: should make a singular friend on the friendlist
 export const FriendCard = ({ friend, deleteFriends, isDashboard }) => {
   return (
     <div className="friend-wrap" id={`userFriendId__${friend.userId}`}>
