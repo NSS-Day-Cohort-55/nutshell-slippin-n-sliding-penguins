@@ -10,7 +10,7 @@
 
 ## ERD:
 
-![Entity Resource Diagram](ERD.png)
+![Entity Relationship Diagram](ERD.png)
 
 ## Instructions For Viewing
 
